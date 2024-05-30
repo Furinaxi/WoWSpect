@@ -1,0 +1,9 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+.idea/.idea.KupoFinder/.idea/discord.xml
+.idea/.idea.KupoFinder/.idea/encodings.xml
+.idea/.idea.KupoFinder/.idea/indexLayout.xml
+.idea/.idea.KupoFinder/.idea/vcs.xml
