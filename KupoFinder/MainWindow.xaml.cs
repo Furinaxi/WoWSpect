@@ -20,4 +20,9 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
+
+    private void DragMoveEvent(object sender, MouseButtonEventArgs e)
+    {
+        DragMove();
+    }
 }
