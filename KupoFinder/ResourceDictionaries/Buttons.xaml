@@ -6,7 +6,31 @@
     </Style>
     
     <Style x:Key="NavPanelButton" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
-        <Setter Property="Margin" Value="0,0,0,20"/>
+        <Setter Property="Margin" Value="0,5,0,0"/>
+        <Setter Property="Background" Value="Red"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="ButtonBorder"
+                            CornerRadius="5"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter  x:Name="ContentPresenter" 
+                                           Focusable="False"
+                                           RecognizesAccessKey="True"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="#8a7247"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
     
     <Style x:Key="SettingsButton" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">

@@ -67,6 +67,9 @@
                 </Grid.ColumnDefinitions>
                 
                 <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
+                    <Button Style="{StaticResource NavPanelButton}" />
+                    <Button Style="{StaticResource NavPanelButton}" />
+                    <Button Style="{StaticResource NavPanelButton}" />
                 </StackPanel>
                 
                 <Border Grid.Column="1" Background="#b58e55" Width="1" Height="540"> 
