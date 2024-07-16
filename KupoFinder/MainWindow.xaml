@@ -67,9 +67,15 @@
                 </Grid.ColumnDefinitions>
                 
                 <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
-                    <Button Style="{StaticResource NavPanelButton}" />
-                    <Button Style="{StaticResource NavPanelButton}" />
-                    <Button Style="{StaticResource NavPanelButton}" />
+                    <RadioButton Style="{StaticResource NavPanelButton}" 
+                         GroupName="NavigationGroup"
+                         IsChecked="True"/>
+                    <RadioButton Style="{StaticResource NavPanelButton}" 
+                                 GroupName="NavigationGroup"
+                                 IsChecked="False"/>
+                    <RadioButton Style="{StaticResource NavPanelButton}" 
+                                 GroupName="NavigationGroup"
+                                 IsChecked="False"/>
                 </StackPanel>
                 
                 <Border Grid.Column="1" Background="#b58e55" Width="1" Height="540"> 

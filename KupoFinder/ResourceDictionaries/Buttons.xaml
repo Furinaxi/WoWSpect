@@ -5,27 +5,45 @@
         <Setter Property="Width" Value="60"/>
     </Style>
     
-    <Style x:Key="NavPanelButton" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+    <Style x:Key="NavPanelButton" TargetType="RadioButton">
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="Height" Value="60"/>
         <Setter Property="Margin" Value="0,5,0,0"/>
-        <Setter Property="Background" Value="Red"></Setter>
+        <Setter Property="Background" Value="#a63c3b" />
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
+                <ControlTemplate TargetType="{x:Type RadioButton}">
                     <Border x:Name="ButtonBorder"
                             CornerRadius="5"
                             Background="{TemplateBinding Background}"
                             SnapsToDevicePixels="True"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <ContentPresenter  x:Name="ContentPresenter" 
-                                           Focusable="False"
-                                           RecognizesAccessKey="True"/>
+                        <Border.Effect>
+                            <DropShadowEffect Color="Black" BlurRadius="1" ShadowDepth="2" Opacity="1"/>
+                        </Border.Effect>
+                        <ContentPresenter x:Name="ContentPresenter"
+                                          Focusable="False"
+                                          RecognizesAccessKey="True"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" Value="#8a7247"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter TargetName="ButtonBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="White" BlurRadius="15" ShadowDepth="0" Opacity="1"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="BorderBrush" Value="Gold"/>
+                            <Setter TargetName="ButtonBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="Gold" BlurRadius="15" ShadowDepth="0" Opacity="1"/>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
