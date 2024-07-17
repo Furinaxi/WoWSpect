@@ -15,7 +15,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Assets\" />
+      <None Remove="Assets\Icons\playerIcon.png" />
+      <Resource Include="Assets\Icons\playerIcon.png" />
     </ItemGroup>
 
 </Project>

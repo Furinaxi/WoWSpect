@@ -16,7 +16,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
                     <Border x:Name="ButtonBorder"
-                            CornerRadius="5"
+                            CornerRadius="10"
                             Background="{TemplateBinding Background}"
                             SnapsToDevicePixels="True"
                             BorderBrush="{TemplateBinding BorderBrush}"
@@ -24,9 +24,28 @@
                         <Border.Effect>
                             <DropShadowEffect Color="Black" BlurRadius="1" ShadowDepth="2" Opacity="1"/>
                         </Border.Effect>
-                        <ContentPresenter x:Name="ContentPresenter"
-                                          Focusable="False"
-                                          RecognizesAccessKey="True"/>
+                        <Grid>
+                            <Border CornerRadius="9" Background="White" Opacity="0.5" Height="20" VerticalAlignment="Top">
+                                <Border.OpacityMask>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#FFFFFFFF" Offset="0.0"/>
+                                        <GradientStop Color="#00FFFFFF" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Border.OpacityMask>
+                            </Border>
+                            <Grid>
+                                <Grid.Effect>
+                                    <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="0" Opacity=".75"/>
+                                </Grid.Effect>
+                                <ContentPresenter x:Name="ContentPresenter"
+                                                  Focusable="False"
+                                                  RecognizesAccessKey="True"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"
+                                                  Width="45"
+                                                  Height="45"/>
+                            </Grid>
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -57,5 +76,49 @@
     
     <Style x:Key="CloseButton" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
         <Setter Property="Margin" Value="0,100,0,0"/>
+    </Style>
+    
+    <Style x:Key="OpenLodeStoneButton" TargetType="Button">
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Background" Value="#3a3a3a"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="ButtonBorder"
+                            CornerRadius="10"
+                            Background="{TemplateBinding Background}">
+                        <Border.Effect>
+                            <DropShadowEffect Color="Black" BlurRadius="1" ShadowDepth="0" Opacity="1"/>
+                        </Border.Effect>
+                        <Grid>
+                            <Border CornerRadius="9" Background="White" Opacity="0.25" Height="10" VerticalAlignment="Top">
+                                <Border.OpacityMask>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#FFFFFFFF" Offset="0.0"/>
+                                        <GradientStop Color="#00FFFFFF" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Border.OpacityMask>
+                            </Border>
+                                <ContentPresenter x:Name="ContentPresenter"
+                                                  Focusable="False"
+                                                  RecognizesAccessKey="True"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter TargetName="ButtonBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="White" BlurRadius="5" ShadowDepth="0" Opacity="1"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>
