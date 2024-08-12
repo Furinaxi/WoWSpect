@@ -4,19 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KupoFinder"
-        xmlns:mvvm="clr-namespace:KupoFinder.MVVM"
+        xmlns:viewModels="clr-namespace:KupoFinder.MVVM.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" 
         Width="800"
         Height="600"
-        Topmost="True"
+        Topmost="False"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        ShowInTaskbar="True"
+        WindowState="Normal">
     <Window.DataContext>
-        <mvvm:MainWindowVM/>
+        <viewModels:MainWindowVM/>
     </Window.DataContext>
     
     <Window.Resources>
@@ -115,18 +117,5 @@
             </Grid>
         </Grid>
     </Border>
-    
-    
-        <!-- <Grid Background="Black" HorizontalAlignment="Left"> -->
-        <!--     <StackPanel Orientation="Vertical" HorizontalAlignment="Center"> -->
-        <!--         <Button Content="Settings" Style="{StaticResource SettingsButton}"/> -->
-        <!--         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"> -->
-        <!--             <Button Content="Button 1" Style="{StaticResource NavPanelButton}"/> -->
-        <!--             <Button Content="Button 2" Style="{StaticResource NavPanelButton}"/> -->
-        <!--             <Button Content="Button 3" Style="{StaticResource NavPanelButton}"/> -->
-        <!--         </StackPanel> -->
-        <!--         <Button Content="Close" Style="{StaticResource CloseButton}"></Button> -->
-        <!--     </StackPanel> -->
-        <!--      -->
-        <!-- </Grid> -->
+
 </Window>

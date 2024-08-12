@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using KupoFinder.ConfigHandler;
 
-namespace KupoFinder.MVVM;
+namespace KupoFinder.MVVM.ViewModels;
 
 public partial class MainWindowVM : ObservableObject
 {

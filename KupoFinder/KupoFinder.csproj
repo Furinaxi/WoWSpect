@@ -19,4 +19,8 @@
       <Resource Include="Assets\Icons\playerIcon.png" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="MVVM\Views\" />
+    </ItemGroup>
+
 </Project>
