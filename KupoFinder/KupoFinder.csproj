@@ -16,11 +16,17 @@
 
     <ItemGroup>
       <None Remove="Assets\Icons\playerIcon.png" />
-      <Resource Include="Assets\Icons\playerIcon.png" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="MVVM\Views\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\headerBackground.png" />
+      <Resource Include="Assets\headerBackground.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
     </ItemGroup>
 
 </Project>

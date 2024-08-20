@@ -10,6 +10,15 @@
     <SolidColorBrush x:Key="ButtonBackgroundBrush">#630200</SolidColorBrush>
     <SolidColorBrush x:Key="ButtonBorderBrush">#676664</SolidColorBrush>
     
+    <RadialGradientBrush x:Key="ButtonTriggerBackgroundBrush" 
+                         GradientOrigin="0.5,0.5" 
+                         Center="0.5,0.5" 
+                         RadiusX="0.5" 
+                         RadiusY="0.5">
+        <GradientStop Color="#bf2926" Offset="0"/>
+        <GradientStop Color="#630200" Offset="1"/>
+    </RadialGradientBrush>
+
     <Style x:Key="InteractionButton" TargetType="Button">
         <Setter Property="Width" Value="60"/>
         <Setter Property="Height" Value="60"/>
@@ -17,17 +26,26 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="Border"
-                            Background="{StaticResource ButtonBackgroundBrush}"
-                            BorderBrush="{StaticResource ButtonBorderBrush}"
-                            BorderThickness="3"
-                            Width="{TemplateBinding Width}"
-                            Height="{TemplateBinding Height}"
-                            CornerRadius="5">
-                        <ContentPresenter HorizontalAlignment="Center" 
+                    <Grid>
+                        <Border x:Name="Border"
+                                Background="{StaticResource ButtonBackgroundBrush}"
+                                BorderBrush="{StaticResource ButtonBorderBrush}"
+                                BorderThickness="3"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                CornerRadius="5">
+                        </Border>
+                        <ContentPresenter x:Name="Presenter"
+                                          HorizontalAlignment="Center" 
                                           VerticalAlignment="Center" 
                                           TextBlock.Foreground="{StaticResource TextColorBrush}"/>
-                    </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Presenter" Property="TextBlock.Foreground" Value="White" />
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource ButtonTriggerBackgroundBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

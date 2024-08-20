@@ -30,7 +30,10 @@
         </ResourceDictionary>
     </Window.Resources>
     
-    <Border Background="#1e2120" BorderBrush="#0f1211" BorderThickness="2.5">
+    <Border BorderBrush="#0f1211" BorderThickness="2.5">
+        <Border.Background>
+            <SolidColorBrush Color="#1e2120" Opacity="0.75"/>
+        </Border.Background>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30" />
@@ -39,16 +42,19 @@
             </Grid.RowDefinitions>
             <Border MouseLeftButtonDown="DragMoveEvent" Background="#0a0a09">
                 <DockPanel Background="Transparent">
-                <TextBlock Height="15" Width="150" TextAlignment="Center" Margin="300 0 0 0" 
-                           Background="Transparent" Foreground="{StaticResource TextColorBrush}" FontSize="14">
-                    PLACEHOLDER NAME
-                </TextBlock>
-                
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Style="{StaticResource InteractionButton}" Width="30" Height="30" Margin="0 -5 -2.5 0" Command="{Binding CloseAppCommand}">
-                        X
-                    </Button>
-                </StackPanel>
+                    <TextBlock Height="15" Width="150" TextAlignment="Center" Margin="300 0 0 0" 
+                               Background="Transparent" Foreground="{StaticResource TextColorBrush}" FontSize="14">
+                        PLACEHOLDER NAME
+                    </TextBlock>
+                    
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Style="{StaticResource InteractionButton}" 
+                                Width="30" Height="30" 
+                                Margin="0 -2.5 -2.5 0" 
+                                Command="{Binding CloseAppCommand}">
+                            X
+                        </Button>
+                    </StackPanel>
 
                 </DockPanel>
             </Border>
@@ -61,40 +67,69 @@
                 </Grid.ColumnDefinitions>
                 
                 <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
-                    <RadioButton Style="{StaticResource NavPanelButton}" IsChecked="True">
-                        Players
-                    </RadioButton>
-                    <RadioButton Style="{StaticResource NavPanelButton}">
-                        Items
-                    </RadioButton>
+                    <StackPanel Margin="0 10 0 0">
+                        <Border Height="25" 
+                                CornerRadius="4" 
+                                BorderBrush="Black" 
+                                BorderThickness="1"
+                                Width="124">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/Assets/headerBackground.png" Stretch="UniformToFill"></ImageBrush>
+                            </Border.Background>
+                            <TextBlock VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10 0 0 0"
+                                       Foreground="White">
+                                Gameplay Data
+                            </TextBlock>
+                            
+                        </Border>
+                        <RadioButton Style="{StaticResource NavPanelButton}"
+                                     IsChecked="True"
+                                     GroupName="NavPanel">
+                            Players
+                        </RadioButton>
+                        <RadioButton Style="{StaticResource NavPanelButton}"
+                                     GroupName="NavPanel">
+                            Items
+                        </RadioButton>
+                    </StackPanel>
+                    <StackPanel Margin="0 10 0 0">
+                        <Border Height="25" 
+                                CornerRadius="4" 
+                                BorderBrush="Black" 
+                                BorderThickness="1"
+                                Width="124">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/Assets/headerBackground.png" Stretch="UniformToFill"></ImageBrush>
+                            </Border.Background>
+                            <TextBlock VerticalAlignment="Center" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10 0 0 0"
+                                       Foreground="White">
+                                System
+                            </TextBlock>
+                            
+                        </Border>
+                        <RadioButton Style="{StaticResource NavPanelButton}"
+                                     GroupName="NavPanel">
+                            Settings
+                        </RadioButton>
+                    </StackPanel>
+                    
                 </StackPanel>
                 
-                <Border Grid.Column="1" Background="#b58e55" Width="1" Height="540"> 
-                    <Border.Effect>
-                        <DropShadowEffect Color="Black" Direction="315" ShadowDepth="1" BlurRadius="2" Opacity="0.5"/>
-                    </Border.Effect>
+                <Border Grid.Column="1" Width="3" Height="550">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#323133" Offset="0"/>
+                            <GradientStop Color="Transparent" Offset="0.6"/>
+                        </LinearGradientBrush>
+                    </Border.Background> 
                 </Border>
                 
                 <Grid Grid.Column="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="40"/>
-                    </Grid.RowDefinitions>
-                    
-                    <Border Grid.Row="1" Background="Black" Height="1" Width="715">
-                        <Border.Effect>
-                            <DropShadowEffect Color="White" Direction="315" ShadowDepth="2" BlurRadius="4" Opacity="0.8"/>
-                        </Border.Effect>
-                    </Border>
-                    <Grid Grid.Row="2" HorizontalAlignment="Right">
-                        <Button Style="{StaticResource OpenLodeStoneButton}" Margin="0,0,20,0">
-                            <TextBlock Style="{StaticResource BaseTextBlockStyle}" 
-                                       TextOptions.TextFormattingMode="Display">
-                                Open
-                            </TextBlock>
-                        </Button>
-                    </Grid>
+                    <ContentControl />
                 </Grid>
             </Grid>
         </Grid>
