@@ -30,60 +30,42 @@
         </ResourceDictionary>
     </Window.Resources>
     
-    <Border Background="#4a4d49" CornerRadius="15" BorderBrush="#8a7247" BorderThickness="2.5">
+    <Border Background="#1e2120" BorderBrush="#0f1211" BorderThickness="2.5">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
+                <RowDefinition Height="30" />
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <DockPanel MouseLeftButtonDown="DragMoveEvent" Background="Transparent">
-                
-                <TextBlock Height="45" Width="150" HorizontalAlignment="Left" Margin="10 10 0 0" 
-                           Background="Transparent" Foreground="White" FontSize="28">
-                    KupoFinder
+            <Border MouseLeftButtonDown="DragMoveEvent" Background="#0a0a09">
+                <DockPanel Background="Transparent">
+                <TextBlock Height="15" Width="150" TextAlignment="Center" Margin="300 0 0 0" 
+                           Background="Transparent" Foreground="{StaticResource TextColorBrush}" FontSize="14">
+                    PLACEHOLDER NAME
                 </TextBlock>
                 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 5 0">
-                    <Button Height="35" Width="35" Margin="0 0 10 0">
-                        <!-- Add Icon here: Settings Icon TODO  -->
-                    </Button>
-                    
-                    <Button Height="35" Width="35" Margin="0 0 10 0" Command="{Binding CloseAppCommand}">
-                        <!-- Add Icon here: Close Icon TODO  -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Style="{StaticResource InteractionButton}" Width="30" Height="30" Margin="0 -5 -2.5 0" Command="{Binding CloseAppCommand}">
                         X
                     </Button>
                 </StackPanel>
 
-            
-            </DockPanel>
-            <Border Grid.Row="1" Background="Black" Height="1" Width="790">
-                <Border.Effect>
-                    <DropShadowEffect Color="White" Direction="315" ShadowDepth="2" BlurRadius="4" Opacity="0.8"/>
-                </Border.Effect>
+                </DockPanel>
             </Border>
+            <Border Grid.Row="1" Background="Black" Height="1" Width="790" />
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="75" />
+                    <ColumnDefinition Width="125" />
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 
-                <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
-                    <RadioButton Style="{StaticResource NavPanelButton}" 
-                         GroupName="NavigationGroup">
-                        <RadioButton.IsChecked>True</RadioButton.IsChecked>
-                        <Image Source="/Assets/Icons/playerIcon.png"/>
+                <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
+                    <RadioButton Style="{StaticResource NavPanelButton}" IsChecked="True">
+                        Players
                     </RadioButton>
-                    <RadioButton Style="{StaticResource NavPanelButton}" 
-                                 GroupName="NavigationGroup"
-                                 IsChecked="False">
-                        <Image Source="/Assets/Icons/playerIcon.png"/>
-                    </RadioButton>
-                    <RadioButton Style="{StaticResource NavPanelButton}" 
-                                 GroupName="NavigationGroup"
-                                 IsChecked="False">
-                        <Image Source="/Assets/Icons/playerIcon.png"/>
+                    <RadioButton Style="{StaticResource NavPanelButton}">
+                        Items
                     </RadioButton>
                 </StackPanel>
                 

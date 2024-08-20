@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:KupoFinder"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Color x:Key="TextColor">#f8cb00</Color>
+        <SolidColorBrush x:Key="TextColorBrush" Color="{StaticResource TextColor}"/>
     </Application.Resources>
 </Application>
