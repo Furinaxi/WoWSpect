@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KupoFinder", "KupoFinder\KupoFinder.csproj", "{E3F341B4-A211-45E9-B9F0-0E6984DDF89C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoWSpect", "WoWSpect\WoWSpect.csproj", "{E3F341B4-A211-45E9-B9F0-0E6984DDF89C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

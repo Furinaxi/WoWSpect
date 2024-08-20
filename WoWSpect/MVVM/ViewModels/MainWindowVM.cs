@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using KupoFinder.ConfigHandler;
+using WoWSpect.ConfigHandler;
 
-namespace KupoFinder.MVVM.ViewModels;
+namespace WoWSpect.MVVM.ViewModels;
 
 public partial class MainWindowVM : ObservableObject
 {

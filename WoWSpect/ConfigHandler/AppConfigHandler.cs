@@ -3,12 +3,12 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace KupoFinder.ConfigHandler;
+namespace WoWSpect.ConfigHandler;
 
 public static class AppConfigHandler
 {
-    private const string ConfigFileName = "KupoFinder.settings.json";
-    private const string FolderName = "KupoFinder";
+    private const string ConfigFileName = "WoWSpect.settings.json";
+    private const string FolderName = "WoWSpect";
 
     public static void CheckConfigFile()
     {
