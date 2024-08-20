@@ -1,6 +1,6 @@
-﻿namespace KupoFinder.APIManager;
+﻿namespace WoWSpect.APIManager;
 
-public class XIVAPIManager
+public class WoWAPIManager
 {
     
 }
