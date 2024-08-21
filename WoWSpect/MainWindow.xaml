@@ -17,28 +17,11 @@
         Background="Transparent"
         ResizeMode="NoResize"
         ShowInTaskbar="True"
-        WindowState="Normal">
+        WindowState="Normal"
+        d:DataContext="{d:DesignInstance Type=viewModels:MainWindowVM, IsDesignTimeCreatable=false}">
     <Window.DataContext>
         <viewModels:MainWindowVM/>
     </Window.DataContext>
-    
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ResourceDictionaries/Buttons.xaml"/>
-                <ResourceDictionary Source="ResourceDictionaries/Texts.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            <DataTemplate DataType="{x:Type viewModels:SettingsVM}">
-                <views:SettingsView />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModels:PlayersVM}">
-                <views:PlayersView />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModels:ItemsVM}">
-                <views:ItemsView />
-            </DataTemplate>
-        </ResourceDictionary>
-    </Window.Resources>
     
     <Border BorderBrush="#0f1211" BorderThickness="2.5">
         <Border.Background>
@@ -142,7 +125,7 @@
                 </Border>
                 
                 <Grid Grid.Column="2">
-                    <ContentControl Content="{Binding CurrentViewModel}"/>
+                    <ContentControl Content="{Binding CurrentView}"/>
                 </Grid>
             </Grid>
         </Grid>

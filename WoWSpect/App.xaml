@@ -4,7 +4,12 @@
              xmlns:local="clr-namespace:WoWSpect"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Color x:Key="TextColor">#f8cb00</Color>
-        <SolidColorBrush x:Key="TextColorBrush" Color="{StaticResource TextColor}"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ResourceDictionaries/Texts.xaml"/>
+                <ResourceDictionary Source="/ResourceDictionaries/Buttons.xaml"/>
+                <ResourceDictionary Source="/ResourceDictionaries/TextBoxes.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

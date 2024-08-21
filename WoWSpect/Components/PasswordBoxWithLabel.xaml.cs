@@ -9,8 +9,8 @@ public partial class PasswordBoxWithLabel : UserControl
     public static readonly DependencyProperty LabelTextProperty = DependencyProperty.Register(
         nameof(LabelText), typeof(string), typeof(PasswordBoxWithLabel), new PropertyMetadata(string.Empty));
 
-    public static readonly DependencyProperty PasswordProperty = DependencyProperty.Register(
-        nameof(Password), typeof(string), typeof(PasswordBoxWithLabel), new PropertyMetadata(string.Empty));
+    public static readonly DependencyProperty UserInputProperty = DependencyProperty.Register(
+        nameof(UserInput), typeof(string), typeof(PasswordBoxWithLabel), new PropertyMetadata(string.Empty));
 
     public static readonly DependencyProperty LabelColorProperty = DependencyProperty.Register(
         nameof(LabelColor), typeof(Brush), typeof(PasswordBoxWithLabel), new PropertyMetadata(Brushes.White));
@@ -21,10 +21,10 @@ public partial class PasswordBoxWithLabel : UserControl
         set { SetValue(LabelColorProperty, value); }
     }
 
-    public string Password
+    public string UserInput
     {
-        get { return (string)GetValue(PasswordProperty); }
-        set { SetValue(PasswordProperty, value); }
+        get { return (string)GetValue(UserInputProperty); }
+        set { SetValue(UserInputProperty, value); }
     }
     
     public string LabelText
@@ -36,11 +36,12 @@ public partial class PasswordBoxWithLabel : UserControl
     public PasswordBoxWithLabel()
     {
         InitializeComponent();
+        UserInput = "blub";
     }
     
     private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
     {
-        Password = inputBox.Password;
+        //Password = inputBox.Password;
     }
 }
 

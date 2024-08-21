@@ -3,20 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:WoWSpect.MVVM.Views"
              xmlns:viewModels="clr-namespace:WoWSpect.MVVM.ViewModels"
              xmlns:components="clr-namespace:WoWSpect.Components"
              mc:Ignorable="d"
              d:DesignHeight="570" d:DesignWidth="675"
-             d:Background="DimGray">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/ResourceDictionaries/Buttons.xaml"/>
-                <ResourceDictionary Source="/ResourceDictionaries/Texts.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </UserControl.Resources>
+             d:DataContext="{d:DesignInstance Type=viewModels:SettingsVM, IsDesignTimeCreatable=false}">
+    
     <UserControl.DataContext>
         <viewModels:SettingsVM />
     </UserControl.DataContext>
@@ -46,11 +38,11 @@
             <StackPanel Margin="40 5 0 0">
                 <components:PasswordBoxWithLabel LabelText="Client ID"
                                                  LabelColor="{StaticResource TextColorBrush}"
-                                                 Password="{Binding ClientID, Mode=TwoWay }"
+                                                 UserInput="{Binding ClientID, Mode=TwoWay }"
                                                  Margin="0 10 0 0"/>
                 <components:PasswordBoxWithLabel LabelText="Client Secret"
                                                  LabelColor="{StaticResource TextColorBrush}"
-                                                 Password="{Binding ClientSecret, Mode=TwoWay }"
+                                                 UserInput="{Binding ClientSecret, Mode=TwoWay }"
                                                  Margin="0 10 0 0"/>
                 <Grid Margin="0 50 0 0">
                     <Button Style="{StaticResource InteractionButton}"

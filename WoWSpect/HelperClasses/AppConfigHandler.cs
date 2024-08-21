@@ -3,7 +3,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace WoWSpect.ConfigHandler;
+namespace WoWSpect.HelperClasses;
 
 public static class AppConfigHandler
 {

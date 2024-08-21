@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using WoWSpect.ConfigHandler;
+using WoWSpect.HelperClasses;
 
 namespace WoWSpect.MVVM.ViewModels;
 
@@ -11,9 +11,13 @@ public partial class SettingsVM : ObservableObject
     
     [ObservableProperty]
     private string _clientSecret;
-    
-    
+
     public SettingsVM()
+    {
+        LoadSettings();
+    }
+    
+    public void LoadSettings()
     {
         string[] keys = [AppConfigHandler.ClientIdKey, AppConfigHandler.ClientSecretKey];
         

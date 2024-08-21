@@ -1,17 +1,20 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Windows.Controls;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using WoWSpect.ConfigHandler;
+using WoWSpect.HelperClasses;
+using WoWSpect.MVVM.Views;
 
 namespace WoWSpect.MVVM.ViewModels;
 
 public partial class MainWindowVM : ObservableObject
 {
     [ObservableProperty]
-    private ObservableObject _currentViewModel = new PlayersVM();
+    private UserControl _currentView;
     
     public MainWindowVM()
     {
         AppConfigHandler.CheckConfigFile();
+        ShowPlayers();
     }
     
     [RelayCommand]
@@ -23,18 +26,18 @@ public partial class MainWindowVM : ObservableObject
     [RelayCommand]
     private void ShowPlayers()
     {
-        CurrentViewModel = new PlayersVM();
+        CurrentView = new PlayersView();
     }
     
     [RelayCommand]
     private void ShowSettings()
     {
-        CurrentViewModel = new SettingsVM();
+        CurrentView = new SettingsView();
     }
     
     [RelayCommand]
     private void ShowItems()
     {
-        CurrentViewModel = new ItemsVM();
+        CurrentView = new ItemsView();
     }
 }
