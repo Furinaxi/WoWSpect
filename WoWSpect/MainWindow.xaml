@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WoWSpect"
         xmlns:viewModels="clr-namespace:WoWSpect.MVVM.ViewModels"
+        xmlns:views="clr-namespace:WoWSpect.MVVM.Views"
         mc:Ignorable="d"
         Title="MainWindow" 
         Width="800"
@@ -27,6 +28,15 @@
                 <ResourceDictionary Source="ResourceDictionaries/Buttons.xaml"/>
                 <ResourceDictionary Source="ResourceDictionaries/Texts.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type viewModels:SettingsVM}">
+                <views:SettingsView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:PlayersVM}">
+                <views:PlayersView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:ItemsVM}">
+                <views:ItemsView />
+            </DataTemplate>
         </ResourceDictionary>
     </Window.Resources>
     
@@ -43,8 +53,8 @@
             <Border MouseLeftButtonDown="DragMoveEvent" Background="#0a0a09">
                 <DockPanel Background="Transparent">
                     <TextBlock Height="15" Width="150" TextAlignment="Center" Margin="300 0 0 0" 
-                               Background="Transparent" Foreground="{StaticResource TextColorBrush}" FontSize="14">
-                        PLACEHOLDER NAME
+                               Background="Transparent" Foreground="{StaticResource TextColorBrush}" FontSize="12">
+                        WoWSpect
                     </TextBlock>
                     
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -86,11 +96,13 @@
                         </Border>
                         <RadioButton Style="{StaticResource NavPanelButton}"
                                      IsChecked="True"
-                                     GroupName="NavPanel">
+                                     GroupName="NavPanel"
+                                     Command="{Binding ShowPlayersCommand}">
                             Players
                         </RadioButton>
                         <RadioButton Style="{StaticResource NavPanelButton}"
-                                     GroupName="NavPanel">
+                                     GroupName="NavPanel"
+                                     Command="{Binding ShowItemsCommand}">
                             Items
                         </RadioButton>
                     </StackPanel>
@@ -112,7 +124,8 @@
                             
                         </Border>
                         <RadioButton Style="{StaticResource NavPanelButton}"
-                                     GroupName="NavPanel">
+                                     GroupName="NavPanel"
+                                     Command="{Binding ShowSettingsCommand}">
                             Settings
                         </RadioButton>
                     </StackPanel>
@@ -129,7 +142,7 @@
                 </Border>
                 
                 <Grid Grid.Column="2">
-                    <ContentControl />
+                    <ContentControl Content="{Binding CurrentViewModel}"/>
                 </Grid>
             </Grid>
         </Grid>

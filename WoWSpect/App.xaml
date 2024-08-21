@@ -1,7 +1,7 @@
-﻿<Application x:Class="KupoFinder.App"
+﻿<Application x:Class="WoWSpect.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:KupoFinder"
+             xmlns:local="clr-namespace:WoWSpect"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <Color x:Key="TextColor">#f8cb00</Color>

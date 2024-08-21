@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace KupoFinder;
+namespace WoWSpect;
 
 /// <summary>
 /// Interaction logic for App.xaml

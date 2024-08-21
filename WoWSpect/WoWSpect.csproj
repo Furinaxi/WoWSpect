@@ -20,10 +20,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="MVVM\Views\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Remove="Assets\headerBackground.png" />
       <Resource Include="Assets\headerBackground.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
