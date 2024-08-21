@@ -29,10 +29,10 @@
         </Border>
         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
             <StackPanel Margin="40 5 0 0">
-                <TextBlock>Test</TextBlock>
-                <TextBlock>Test</TextBlock>
-                <TextBlock>Test</TextBlock>
-                <TextBlock>Test</TextBlock>
+                <TextBlock>Test 2</TextBlock>
+                <TextBlock>Test 2</TextBlock>
+                <TextBlock>Test 2</TextBlock>
+                <TextBlock>Test 2</TextBlock>
             </StackPanel>
         </ScrollViewer>
     </Grid>

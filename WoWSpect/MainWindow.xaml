@@ -1,4 +1,5 @@
 ﻿<Window x:Class="WoWSpect.MainWindow"
+        x:Name="root"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,6 +7,7 @@
         xmlns:local="clr-namespace:WoWSpect"
         xmlns:viewModels="clr-namespace:WoWSpect.MVVM.ViewModels"
         xmlns:views="clr-namespace:WoWSpect.MVVM.Views"
+        xmlns:components="clr-namespace:WoWSpect.Components"
         mc:Ignorable="d"
         Title="MainWindow" 
         Width="800"
@@ -77,17 +79,19 @@
                             </TextBlock>
                             
                         </Border>
-                        <RadioButton Style="{StaticResource NavPanelButton}"
+                        <components:ViewSelectionButton Style="{StaticResource NavPanelButton}"
                                      IsChecked="True"
                                      GroupName="NavPanel"
-                                     Command="{Binding ShowPlayersCommand}">
+                                     ViewType="{x:Type views:PlayersView}"
+                                     SwitchViewCommand="{Binding ElementName=root, Path=SwitchViewCommand, Mode=OneWay}">
                             Players
-                        </RadioButton>
-                        <RadioButton Style="{StaticResource NavPanelButton}"
+                        </components:ViewSelectionButton>
+                        <components:ViewSelectionButton Style="{StaticResource NavPanelButton}"
                                      GroupName="NavPanel"
-                                     Command="{Binding ShowItemsCommand}">
+                                     ViewType="{x:Type views:ItemsView}"
+                                     SwitchViewCommand="{Binding ElementName=root, Path=SwitchViewCommand, Mode=OneWay}">
                             Items
-                        </RadioButton>
+                        </components:ViewSelectionButton>
                     </StackPanel>
                     <StackPanel Margin="0 10 0 0">
                         <Border Height="25" 
@@ -106,11 +110,12 @@
                             </TextBlock>
                             
                         </Border>
-                        <RadioButton Style="{StaticResource NavPanelButton}"
+                        <components:ViewSelectionButton Style="{StaticResource NavPanelButton}"
                                      GroupName="NavPanel"
-                                     Command="{Binding ShowSettingsCommand}">
+                                     ViewType="{x:Type views:SettingsView}"
+                                     SwitchViewCommand="{Binding ElementName=root, Path=SwitchViewCommand, Mode=OneWay}">
                             Settings
-                        </RadioButton>
+                        </components:ViewSelectionButton>
                     </StackPanel>
                     
                 </StackPanel>
@@ -125,7 +130,7 @@
                 </Border>
                 
                 <Grid Grid.Column="2">
-                    <ContentControl Content="{Binding CurrentView}"/>
+                    <ContentControl x:Name="MainContent"/>
                 </Grid>
             </Grid>
         </Grid>

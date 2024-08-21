@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:components="clr-namespace:WoWSpect.Components">
     
     <Color x:Key="OnHoverBorderColor">Gray</Color>
     <Color x:Key="OnCheckedBorderColor">#937d0f</Color>
@@ -52,7 +53,7 @@
     </Style>
     
     
-    <Style x:Key="NavPanelButton" TargetType="RadioButton">
+    <Style x:Key="NavPanelButton" TargetType="components:ViewSelectionButton">
         <Setter Property="Width" Value="120" />
         <Setter Property="Height" Value="20" />
         <Setter Property="Margin" Value="0,5,0,0"/>
