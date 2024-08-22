@@ -12,6 +12,7 @@ public static class AppConfigHandler
     
     public static string ClientIdKey = "clientID";
     public static string ClientSecretKey = "clientSecret";
+    public static string AccessTokenKey = "accessToken";
 
     public static void CheckConfigFile()
     {
@@ -49,6 +50,8 @@ public static class AppConfigHandler
                 writer.WritePropertyName(ClientIdKey);
                 writer.WriteValue("");
                 writer.WritePropertyName(ClientSecretKey);
+                writer.WriteValue("");
+                writer.WritePropertyName(AccessTokenKey);
                 writer.WriteValue("");
                 writer.WriteEndObject();
             }

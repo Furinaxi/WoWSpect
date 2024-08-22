@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WoWSpect.HelperClasses;
+using WoWSpect.MVVM.Models.Settings;
 
 namespace WoWSpect.MVVM.ViewModels;
 
@@ -34,14 +35,24 @@ public partial class SettingsVM : ObservableObject
     }
     
     [RelayCommand]
-    private void SaveSettings()
+    private async Task SaveSettings()
     {
-        Dictionary<string, string> values = new Dictionary<string, string>
-        {
-            [AppConfigHandler.ClientIdKey] = ClientID,
-            [AppConfigHandler.ClientSecretKey] = ClientSecret
-        };
+        string url = "https://oauth.battle.net/token";
+        var postBody = new { grant_type = "client_credentials" };
         
-        AppConfigHandler.SetValues(values);
+        var credentials = await APIHandler.Receive<ClientCredentials>(url, ClientID, ClientSecret, postBody);
+        
+        
+        if (credentials is not null)
+        {
+            Dictionary<string, string> values = new Dictionary<string, string>
+            {
+                [AppConfigHandler.ClientIdKey] = ClientID,
+                [AppConfigHandler.ClientSecretKey] = ClientSecret,
+                [AppConfigHandler.AccessTokenKey] = credentials.access_token,
+            };
+        
+            AppConfigHandler.SetValues(values);
+        }
     }
 }
