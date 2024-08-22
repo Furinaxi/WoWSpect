@@ -7,13 +7,13 @@ namespace WoWSpect.Components;
 public partial class TextBoxWithLabel : UserControl
 {
     public static readonly DependencyProperty TextBoxLabelText = DependencyProperty.Register(
-        nameof(TextLabelText), typeof(string), typeof(PasswordBoxWithLabel), new PropertyMetadata(string.Empty));
+        nameof(TextLabelText), typeof(string), typeof(TextBoxWithLabel), new PropertyMetadata(string.Empty));
 
     public static readonly DependencyProperty TextBoxUserInputProperty = DependencyProperty.Register(
-        nameof(TextBoxUserInput), typeof(string), typeof(PasswordBoxWithLabel), new PropertyMetadata(string.Empty));
+        nameof(TextBoxUserInput), typeof(string), typeof(TextBoxWithLabel), new PropertyMetadata(string.Empty));
 
     public static readonly DependencyProperty TextBoxLabelColorProperty = DependencyProperty.Register(
-        nameof(TextBoxLabelColor), typeof(Brush), typeof(PasswordBoxWithLabel), new PropertyMetadata(Brushes.White));
+        nameof(TextBoxLabelColor), typeof(Brush), typeof(TextBoxWithLabel), new PropertyMetadata(Brushes.White));
 
     public static readonly DependencyProperty TextBoxMaxUserInputLength = DependencyProperty.Register(
         nameof(UserInputMaxLength), typeof(int), typeof(TextBoxWithLabel), new PropertyMetadata(default(int)));

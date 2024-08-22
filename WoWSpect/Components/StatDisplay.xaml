@@ -9,15 +9,16 @@
     <StackPanel>
             <local:Header HeaderHeight="40"
                           HeaderWidth="125"
-                          HeaderContent="{Binding StatHeaderContent, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                          HeaderContent="{Binding StatHeaderContent, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                          Margin="-500 0 0 10 "/>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 
                 <local:TextDisplay TextDisplayInfo="{Binding FirstStatName, RelativeSource={RelativeSource AncestorType=UserControl}}"

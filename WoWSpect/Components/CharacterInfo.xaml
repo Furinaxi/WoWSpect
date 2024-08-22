@@ -5,76 +5,112 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:WoWSpect.Components"
              mc:Ignorable="d"
-             d:DesignHeight="570" d:DesignWidth="675">
+             d:DesignHeight="570" d:DesignWidth="675"
+             x:Name="root">
     <StackPanel>
-        <StackPanel>
+        <StackPanel Margin="0 20 0 0">
                 <local:Header HeaderHeight="40"
                               HeaderWidth="125"
-                              HeaderContent="Meta Data"/>
-                <local:TextDisplay TextDisplayInfo="Character Name:"
-                                   TextDisplayShow=""
+                              HeaderContent="Meta Data"
+                              Margin="-500 0 0 0 "/>
+                <StackPanel Margin="0 10 0 0">
+                    <local:TextDisplay TextDisplayInfo="Character Name:"
+                                   TextDisplayShow="{Binding CharacterNameValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"/>
                 <local:TextDisplay TextDisplayInfo="Faction:"
-                                   TextDisplayShow=""
+                                   TextDisplayShow="{Binding FactionValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"/>
                 <local:TextDisplay TextDisplayInfo="Race:"
-                                   TextDisplayShow=""
+                                   TextDisplayShow="{Binding RaceValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"/>
                 <local:TextDisplay TextDisplayInfo="Class:"
-                                   TextDisplayShow=""
+                                   TextDisplayShow="{Binding ClassValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"/>
                 <local:TextDisplay TextDisplayInfo="Active Spec:"
-                                   TextDisplayShow=""
+                                   TextDisplayShow="{Binding ActiveSpecValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"/>
                 <local:TextDisplay TextDisplayInfo="Realm:"
-                                   TextDisplayShow=""
+                                   TextDisplayShow="{Binding RealmValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"/>
                 <local:TextDisplay TextDisplayInfo="Level:"
-                                   TextDisplayShow=""
+                                   TextDisplayShow="{Binding LevelValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"/>
                 <local:TextDisplay TextDisplayInfo="Active Title:"
-                                   TextDisplayShow=""
+                                   TextDisplayShow="{Binding ActiveTitleValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"/>
-                <local:TextDisplay TextDisplayInfo="Currently subscribed:"
-                                   TextDisplayShow=""
+                <local:TextDisplay TextDisplayInfo="Subscribed:"
+                                   TextDisplayShow="{Binding CurrentlySubscribedValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                </StackPanel>
             </StackPanel>
         <local:StatDisplay StatHeaderContent="Main Stats"
                            FirstStatName="Stamina:"
                            SecondStatName="Strength:"
                            ThirdStatName="Agility:"
                            FourthStatName="Intellect:"
-                           FirstStatValue=""
-                           SecondStatValue=""
-                           ThirdStatValue=""
-                           FourthStatValue=""/>
+                           FirstStatValue="{Binding StaminaValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           SecondStatValue="{Binding StrengthValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           ThirdStatValue="{Binding AgilityValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           FourthStatValue="{Binding IntellectValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           Margin="0 20 0 0"/>
+        
         <local:StatDisplay StatHeaderContent="Secondary Stats"
                            FirstStatName="Critical Strike:"
                            SecondStatName="Haste:"
                            ThirdStatName="Mastery:"
                            FourthStatName="Versatility:"
-                           FirstStatValue=""
-                           SecondStatValue=""
-                           ThirdStatValue=""
-                           FourthStatValue=""/>
+                           FirstStatValue="{Binding CritValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           SecondStatValue="{Binding HasteValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           ThirdStatValue="{Binding MasteryValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           FourthStatValue="{Binding VersatilityValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           Margin="0 20 0 0"/>
+        
         <local:StatDisplay StatHeaderContent="Tertiary Stats"
                            FirstStatName="Avoidance:"
-                           SecondStatName="Indestructible:"
-                           ThirdStatName="Leech:"
-                           FourthStatName="Speed:"
-                           FirstStatValue=""
-                           SecondStatValue=""
-                           ThirdStatValue=""
-                           FourthStatValue=""/>
-
+                           SecondStatName="Leech:"
+                           ThirdStatName="Speed:"
+                           FirstStatValue="{Binding AvoidanceValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           SecondStatValue="{Binding LeechValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           ThirdStatValue="{Binding SpeedValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           Margin="0 20 0 0"/>
+        
+        <StackPanel>
+            <local:Header HeaderHeight="40"
+                          HeaderWidth="125"
+                          HeaderContent="Mythic+ Stats"
+                          Margin="-500 20 0 10 "/>
+            <local:TextDisplay TextDisplayInfo="Rating:"
+                               TextDisplayShow="{Binding MythicRatingValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                               TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                               TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+            <ItemsControl>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="125" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBlock Grid.Column="0" 
+                                       Text="Test" 
+                                       Foreground="{StaticResource TextColorBrush}"/>
+                            <TextBlock Grid.Column="1" 
+                                       Text="Test" 
+                                       Foreground="{StaticResource TextColorBrush}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
     </StackPanel>
 </UserControl>

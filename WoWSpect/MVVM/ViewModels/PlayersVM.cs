@@ -14,6 +14,9 @@ public partial class PlayersVM : ObservableObject
     [ObservableProperty]
     private string _characterName;
     
+    [ObservableProperty]
+    private bool _hasData = false;
+    
     public PlayersVM()
     {
         

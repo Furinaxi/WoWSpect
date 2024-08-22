@@ -5,9 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:WoWSpect.MVVM.ViewModels"
              xmlns:components="clr-namespace:WoWSpect.Components"
+             xmlns:helperClasses="clr-namespace:WoWSpect.HelperClasses"
              mc:Ignorable="d"
              d:DesignHeight="570" d:DesignWidth="675"
              d:DataContext="{d:DesignInstance Type=viewModels:PlayersVM, IsDesignTimeCreatable=false}">
+    <UserControl.Resources>
+        <helperClasses:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -60,9 +65,7 @@
                         </Border.Background>
                     </Border>
                 </StackPanel>
-                <Grid>
-                    
-                </Grid>
+                <components:CharacterInfo Visibility="{Binding HasData, Converter={StaticResource BoolToVisibilityConverter}}"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>
