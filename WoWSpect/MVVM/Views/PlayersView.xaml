@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:WoWSpect.MVVM.ViewModels"
+             xmlns:components="clr-namespace:WoWSpect.Components"
              mc:Ignorable="d"
              d:DesignHeight="570" d:DesignWidth="675"
              d:DataContext="{d:DesignInstance Type=viewModels:PlayersVM, IsDesignTimeCreatable=false}">
@@ -30,10 +31,38 @@
         </Border>
         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
             <StackPanel Margin="40 5 0 0">
-                <TextBlock>Test</TextBlock>
-                <TextBlock>Test</TextBlock>
-                <TextBlock>Test</TextBlock>
-                <TextBlock>Test</TextBlock>
+                <StackPanel>
+                    <components:TextBoxWithLabel TextLabelText="Region"
+                                                 UserInputMaxLength="2"
+                                                 TextBoxLabelColor="{StaticResource TextColorBrush}"
+                                                 TextBoxLabelFontSize="11"
+                                                 TextBoxUserInput="{Binding Region}"/>
+                    <components:TextBoxWithLabel TextLabelText="Realm"
+                                                 TextBoxLabelColor="{StaticResource TextColorBrush}"
+                                                 TextBoxUserInput="{Binding Realm}"/>
+                    <components:TextBoxWithLabel TextLabelText="Character Name"
+                                                 TextBoxLabelColor="{StaticResource TextColorBrush}"
+                                                 TextBoxUserInput="{Binding CharacterName}"/>
+                    <Button Style="{StaticResource InteractionButton}"
+                            Width="100"
+                            Height="30"
+                            Margin="200 20 0 0">
+                        Search
+                    </Button>
+                    <Border Height="1" Opacity="0.5" Margin="0 15 0 0 ">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="Transparent" Offset="0"/>
+                                <GradientStop Color="#484b47" Offset="0.2"/>
+                                <GradientStop Color="#484b47" Offset="0.6"/>
+                                <GradientStop Color="Transparent" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+                </StackPanel>
+                <Grid>
+                    
+                </Grid>
             </StackPanel>
         </ScrollViewer>
     </Grid>

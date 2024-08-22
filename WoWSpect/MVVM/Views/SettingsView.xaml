@@ -36,13 +36,13 @@
         </Border>
         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
             <StackPanel Margin="40 5 0 0">
-                <components:PasswordBoxWithLabel LabelText="Client ID"
-                                                 LabelColor="{StaticResource TextColorBrush}"
-                                                 UserInput="{Binding ClientID, Mode=TwoWay }"
+                <components:PasswordBoxWithLabel PasswordBoxLabelText="Client ID"
+                                                 PasswordBoxLabelColor="{StaticResource TextColorBrush}"
+                                                 PasswordBoxUserInput="{Binding ClientID, Mode=TwoWay }"
                                                  Margin="0 10 0 0"/>
-                <components:PasswordBoxWithLabel LabelText="Client Secret"
-                                                 LabelColor="{StaticResource TextColorBrush}"
-                                                 UserInput="{Binding ClientSecret, Mode=TwoWay }"
+                <components:PasswordBoxWithLabel PasswordBoxLabelText="Client Secret"
+                                                 PasswordBoxLabelColor="{StaticResource TextColorBrush}"
+                                                 PasswordBoxUserInput="{Binding ClientSecret, Mode=TwoWay }"
                                                  Margin="0 10 0 0"/>
                 <Grid Margin="0 50 0 0">
                     <Button Style="{StaticResource InteractionButton}"

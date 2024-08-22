@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="WoWSpect.Components.StatDisplay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:WoWSpect.Components"
+             mc:Ignorable="d"
+             d:DesignHeight="570" d:DesignWidth="675">
+    <StackPanel>
+            <local:Header HeaderHeight="40"
+                          HeaderWidth="125"
+                          HeaderContent="{Binding StatHeaderContent, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                
+                <local:TextDisplay TextDisplayInfo="{Binding FirstStatName, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding FirstStatValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"
+                                   Grid.Row="0"
+                                   Grid.Column="0"/>
+                <local:TextDisplay TextDisplayInfo="{Binding SecondStatName, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding SecondStatValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"
+                                   Grid.Row="0"
+                                   Grid.Column="1"/>
+                <local:TextDisplay TextDisplayInfo="{Binding ThirdStatName, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding ThirdStatValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"
+                                   Grid.Row="1"
+                                   Grid.Column="0"/>
+                <local:TextDisplay TextDisplayInfo="{Binding FourthStatName, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding FourthStatValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"
+                                   Grid.Row="1"
+                                   Grid.Column="1"/>
+            </Grid>
+        </StackPanel>
+</UserControl>

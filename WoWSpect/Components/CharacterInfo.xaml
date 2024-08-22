@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="WoWSpect.Components.CharacterInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:WoWSpect.Components"
+             mc:Ignorable="d"
+             d:DesignHeight="570" d:DesignWidth="675">
+    <StackPanel>
+        <StackPanel>
+                <local:Header HeaderHeight="40"
+                              HeaderWidth="125"
+                              HeaderContent="Meta Data"/>
+                <local:TextDisplay TextDisplayInfo="Character Name:"
+                                   TextDisplayShow=""
+                                   TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                <local:TextDisplay TextDisplayInfo="Faction:"
+                                   TextDisplayShow=""
+                                   TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                <local:TextDisplay TextDisplayInfo="Race:"
+                                   TextDisplayShow=""
+                                   TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                <local:TextDisplay TextDisplayInfo="Class:"
+                                   TextDisplayShow=""
+                                   TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                <local:TextDisplay TextDisplayInfo="Active Spec:"
+                                   TextDisplayShow=""
+                                   TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                <local:TextDisplay TextDisplayInfo="Realm:"
+                                   TextDisplayShow=""
+                                   TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                <local:TextDisplay TextDisplayInfo="Level:"
+                                   TextDisplayShow=""
+                                   TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                <local:TextDisplay TextDisplayInfo="Active Title:"
+                                   TextDisplayShow=""
+                                   TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                <local:TextDisplay TextDisplayInfo="Currently subscribed:"
+                                   TextDisplayShow=""
+                                   TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+            </StackPanel>
+        <local:StatDisplay StatHeaderContent="Main Stats"
+                           FirstStatName="Stamina:"
+                           SecondStatName="Strength:"
+                           ThirdStatName="Agility:"
+                           FourthStatName="Intellect:"
+                           FirstStatValue=""
+                           SecondStatValue=""
+                           ThirdStatValue=""
+                           FourthStatValue=""/>
+        <local:StatDisplay StatHeaderContent="Secondary Stats"
+                           FirstStatName="Critical Strike:"
+                           SecondStatName="Haste:"
+                           ThirdStatName="Mastery:"
+                           FourthStatName="Versatility:"
+                           FirstStatValue=""
+                           SecondStatValue=""
+                           ThirdStatValue=""
+                           FourthStatValue=""/>
+        <local:StatDisplay StatHeaderContent="Tertiary Stats"
+                           FirstStatName="Avoidance:"
+                           SecondStatName="Indestructible:"
+                           ThirdStatName="Leech:"
+                           FourthStatName="Speed:"
+                           FirstStatValue=""
+                           SecondStatValue=""
+                           ThirdStatValue=""
+                           FourthStatValue=""/>
+
+    </StackPanel>
+</UserControl>

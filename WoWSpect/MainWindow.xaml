@@ -63,27 +63,14 @@
                 
                 <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
                     <StackPanel Margin="0 10 0 0">
-                        <Border Height="25" 
-                                CornerRadius="4" 
-                                BorderBrush="Black" 
-                                BorderThickness="1"
-                                Width="124">
-                            <Border.Background>
-                                <ImageBrush ImageSource="/Assets/headerBackground.png" Stretch="UniformToFill"></ImageBrush>
-                            </Border.Background>
-                            <TextBlock VerticalAlignment="Center" 
-                                       HorizontalAlignment="Left" 
-                                       Margin="10 0 0 0"
-                                       Foreground="White">
-                                Gameplay Data
-                            </TextBlock>
-                            
-                        </Border>
+                        <components:Header HeaderHeight="25"
+                                           HeaderWidth="124"
+                                           HeaderContent="Gameplay Data"/>
                         <components:ViewSelectionButton Style="{StaticResource NavPanelButton}"
-                                     IsChecked="True"
-                                     GroupName="NavPanel"
-                                     ViewType="{x:Type views:PlayersView}"
-                                     SwitchViewCommand="{Binding ElementName=root, Path=SwitchViewCommand, Mode=OneWay}">
+                                                        IsChecked="True"
+                                                        GroupName="NavPanel"
+                                                        ViewType="{x:Type views:PlayersView}"
+                                                        SwitchViewCommand="{Binding ElementName=root, Path=SwitchViewCommand, Mode=OneWay}">
                             Players
                         </components:ViewSelectionButton>
                         <components:ViewSelectionButton Style="{StaticResource NavPanelButton}"
@@ -94,22 +81,9 @@
                         </components:ViewSelectionButton>
                     </StackPanel>
                     <StackPanel Margin="0 10 0 0">
-                        <Border Height="25" 
-                                CornerRadius="4" 
-                                BorderBrush="Black" 
-                                BorderThickness="1"
-                                Width="124">
-                            <Border.Background>
-                                <ImageBrush ImageSource="/Assets/headerBackground.png" Stretch="UniformToFill"></ImageBrush>
-                            </Border.Background>
-                            <TextBlock VerticalAlignment="Center" 
-                                       HorizontalAlignment="Left" 
-                                       Margin="10 0 0 0"
-                                       Foreground="White">
-                                System
-                            </TextBlock>
-                            
-                        </Border>
+                        <components:Header HeaderHeight="25"
+                                           HeaderWidth="124"
+                                           HeaderContent="System"/>
                         <components:ViewSelectionButton Style="{StaticResource NavPanelButton}"
                                      GroupName="NavPanel"
                                      ViewType="{x:Type views:SettingsView}"

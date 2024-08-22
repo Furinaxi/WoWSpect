@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Windows;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WoWSpect.HelperClasses;
 using WoWSpect.MVVM.Models.Settings;
@@ -53,6 +54,18 @@ public partial class SettingsVM : ObservableObject
             };
         
             AppConfigHandler.SetValues(values);
+
+            MessageBox.Show("Settings saved successfully!", 
+                "Success", 
+                MessageBoxButton.OK, 
+                MessageBoxImage.Information);
+        }
+        else
+        {
+            MessageBox.Show("Settings could not be saved. Please check your client ID and client secret.", 
+                "Error", 
+                MessageBoxButton.OK, 
+                MessageBoxImage.Error);
         }
     }
 }

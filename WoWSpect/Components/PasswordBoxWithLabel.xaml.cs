@@ -6,42 +6,36 @@ namespace WoWSpect.Components;
 
 public partial class PasswordBoxWithLabel : UserControl
 {
-    public static readonly DependencyProperty LabelTextProperty = DependencyProperty.Register(
-        nameof(LabelText), typeof(string), typeof(PasswordBoxWithLabel), new PropertyMetadata(string.Empty));
+    public static readonly DependencyProperty PasswordBoxLabelTextProperty = DependencyProperty.Register(
+        nameof(PasswordBoxLabelText), typeof(string), typeof(PasswordBoxWithLabel), new PropertyMetadata(string.Empty));
 
-    public static readonly DependencyProperty UserInputProperty = DependencyProperty.Register(
-        nameof(UserInput), typeof(string), typeof(PasswordBoxWithLabel), new PropertyMetadata(string.Empty));
+    public static readonly DependencyProperty PasswordBoxUserInputProperty = DependencyProperty.Register(
+        nameof(PasswordBoxUserInput), typeof(string), typeof(PasswordBoxWithLabel), new PropertyMetadata(string.Empty));
 
-    public static readonly DependencyProperty LabelColorProperty = DependencyProperty.Register(
-        nameof(LabelColor), typeof(Brush), typeof(PasswordBoxWithLabel), new PropertyMetadata(Brushes.White));
+    public static readonly DependencyProperty PasswordBoxLabelColorProperty = DependencyProperty.Register(
+        nameof(PasswordBoxLabelColor), typeof(Brush), typeof(PasswordBoxWithLabel), new PropertyMetadata(Brushes.White));
 
-    public Brush LabelColor
+    public Brush PasswordBoxLabelColor
     {
-        get { return (Brush)GetValue(LabelColorProperty); }
-        set { SetValue(LabelColorProperty, value); }
+        get { return (Brush)GetValue(PasswordBoxLabelColorProperty); }
+        set { SetValue(PasswordBoxLabelColorProperty, value); }
     }
 
-    public string UserInput
+    public string PasswordBoxUserInput
     {
-        get { return (string)GetValue(UserInputProperty); }
-        set { SetValue(UserInputProperty, value); }
+        get { return (string)GetValue(PasswordBoxUserInputProperty); }
+        set { SetValue(PasswordBoxUserInputProperty, value); }
     }
     
-    public string LabelText
+    public string PasswordBoxLabelText
     {
-        get { return (string)GetValue(LabelTextProperty); }
-        set { SetValue(LabelTextProperty, value); }
+        get { return (string)GetValue(PasswordBoxLabelTextProperty); }
+        set { SetValue(PasswordBoxLabelTextProperty, value); }
     }
     
     public PasswordBoxWithLabel()
     {
         InitializeComponent();
-        UserInput = "blub";
-    }
-    
-    private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
-    {
-        //Password = inputBox.Password;
     }
 }
 
