@@ -175,7 +175,7 @@ public partial class PlayersVM : ObservableObject
             while (j >= 0 && comparison(list[j], key))
             {
                 list[j + 1] = list[j];
-                j = j - 1;
+                j -= 1;
             }
             list[j + 1] = key;
         }

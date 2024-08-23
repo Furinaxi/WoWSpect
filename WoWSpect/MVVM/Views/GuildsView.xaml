@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="WoWSpect.MVVM.Views.GuildsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:WoWSpect.MVVM.Views"
+             xmlns:components="clr-namespace:WoWSpect.Components"
+             xmlns:viewModels="clr-namespace:WoWSpect.MVVM.ViewModels"
+             xmlns:helperClasses="clr-namespace:WoWSpect.HelperClasses"
+             mc:Ignorable="d"
+             d:DesignHeight="570" d:DesignWidth="675">
+    
+    <UserControl.DataContext>
+        <viewModels:GuildsVM />
+    </UserControl.DataContext>
+    
+    <UserControl.Resources>
+        <helperClasses:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <helperClasses:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" 
+                   FontSize="18" 
+                   Margin="20 5 0 0"
+                   Foreground="White">Guild</TextBlock>
+        <Border Grid.Row="1" Height="1" Opacity="0.5" Margin="0 5 0 0 ">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="Transparent" Offset="0"/>
+                    <GradientStop Color="#484b47" Offset="0.2"/>
+                    <GradientStop Color="#484b47" Offset="0.6"/>
+                    <GradientStop Color="Transparent" Offset="0.8"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="40 5 0 0">
+                <StackPanel>
+                    <StackPanel>
+                        <components:TextBoxWithLabel TextLabelText="Region"
+                                                     UserInputMaxLength="2"
+                                                     TextBoxLabelColor="{StaticResource TextColorBrush}"
+                                                     TextBoxLabelFontSize="11"
+                                                     TextBoxUserInput="{Binding Region, Mode=TwoWay}"/>
+                        <components:TextBoxWithLabel TextLabelText="Realm"
+                                                     TextBoxLabelColor="{StaticResource TextColorBrush}"
+                                                     TextBoxUserInput="{Binding Realm, Mode=TwoWay}"/>
+                        <components:TextBoxWithLabel TextLabelText="Guild Name"
+                                                     TextBoxLabelColor="{StaticResource TextColorBrush}"
+                                                     TextBoxUserInput="{Binding GuildName, Mode=TwoWay}"/>
+                        <Button Style="{StaticResource InteractionButton}"
+                                Width="100"
+                                Height="30"
+                                Margin="200 20 0 0"
+                                Command="{Binding SearchGuildCommand}">
+                            Search
+                        </Button>
+                        <Border Height="1" Opacity="0.5" Margin="0 15 0 0 ">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="Transparent" Offset="0"/>
+                                    <GradientStop Color="#484b47" Offset="0.2"/>
+                                    <GradientStop Color="#484b47" Offset="0.6"/>
+                                    <GradientStop Color="Transparent" Offset="0.8"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                    </StackPanel>
+                    <components:GuildInfo Visibility="{Binding HasData, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}"
+                                          GuildFactionValue=""
+                                          GuildNameValue=""
+                                          GuildRealmValue=""
+                                          GuildMemberListSource=""/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

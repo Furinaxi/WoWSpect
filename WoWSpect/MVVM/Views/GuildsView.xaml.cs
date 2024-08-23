@@ -2,9 +2,9 @@
 
 namespace WoWSpect.MVVM.Views;
 
-public partial class ItemsView : UserControl
+public partial class GuildsView : UserControl
 {
-    public ItemsView()
+    public GuildsView()
     {
         InitializeComponent();
     }

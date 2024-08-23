@@ -75,9 +75,9 @@
                         </components:ViewSelectionButton>
                         <components:ViewSelectionButton Style="{StaticResource NavPanelButton}"
                                      GroupName="NavPanel"
-                                     ViewType="{x:Type views:ItemsView}"
+                                     ViewType="{x:Type views:GuildsView}"
                                      SwitchViewCommand="{Binding ElementName=root, Path=SwitchViewCommand, Mode=OneWay}">
-                            Items
+                            Guilds
                         </components:ViewSelectionButton>
                     </StackPanel>
                     <StackPanel Margin="0 10 0 0">
