@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WoWSpect.HelperClasses;
 using WoWSpect.MVVM.Models.Players;
@@ -11,7 +10,7 @@ using Season = WoWSpect.MVVM.Models.Players.MythicProfile.Season;
 
 namespace WoWSpect.MVVM.ViewModels;
 
-public partial class PlayersVM : ObservableObject
+public partial class PlayersVM : TokenAccessor
 {
     [ObservableProperty]
     private string _region;
@@ -44,7 +43,7 @@ public partial class PlayersVM : ObservableObject
     private bool _hasData = false;
 
     [ObservableProperty]
-    private string _infoLabelText = "Enter character information to search. Multiple words should be separated by a hyphen (-), e.g. Argent Dawn => Argent-Dawn.";
+    private string _infoLabelText = "Enter character information to search.\n\nMultiple words should be separated by a hyphen (-), e.g. Argent Dawn => Argent-Dawn.";
 
     private static readonly MythicSeasonPerformanceData EmptyMythicSeasonPerformance = new()
     {
@@ -78,24 +77,24 @@ public partial class PlayersVM : ObservableObject
         Region = Region.ToLower();
         Realm = Realm.ToLower();
         CharacterName = CharacterName.ToLower();
+        
+        Dictionary<string, string> queryParams = new()
+        {
+            {"namespace", "profile-" + Region},
+            {"locale", "en_US"},
+            {"access_token", accessToken}
+        };
 
-        string characterMetaDataUrl = GetCharacterMetaDataUrl(accessToken);
-        string characterStatusUrl = GetCharacterStatusUrl(accessToken);
+        string characterMetaDataUrl = $"https://{Region}.api.blizzard.com/profile/wow/character/{Realm}/{CharacterName}";
+        string characterStatusUrl = $"https://{Region}.api.blizzard.com/profile/wow/character/{Realm}/{CharacterName}/status";
 
-        var characterMetaData = await APIHandler.Get<CharacterMetaData>(characterMetaDataUrl);
-        var characterStatus = await APIHandler.Get<CharacterStatusData>(characterStatusUrl);
+        var characterMetaData = await APIHandler.Get<CharacterMetaData>(characterMetaDataUrl, queryParams);
+        var characterStatus = await APIHandler.Get<CharacterStatusData>(characterStatusUrl, queryParams);
 
         if (characterMetaData is not null && characterStatus is not null)
         {
             Cmd = characterMetaData;
             Csd = characterStatus;
-            
-            Dictionary<string, string> queryParams = new()
-            {
-                {"namespace", "profile-" + Region},
-                {"locale", "en_US"},
-                {"access_token", accessToken}
-            };
             
             var characterStats = await APIHandler.Get<CharacterStatisticData>(characterMetaData.statistics.href, queryParams);
             
@@ -140,30 +139,6 @@ public partial class PlayersVM : ObservableObject
         }
         
         InfoLabelText = "Character not found. Please check the region, realm, and character name and try again. \n\nMultiple words should be separated by a hyphen (-), e.g. Argent Dawn => Argent-Dawn.";
-    }
-    
-    private bool AccessTokenExists(out string accessToken)
-    {
-        if (!AppConfigHandler.TryGetValue(AppConfigHandler.AccessTokenKey, out accessToken))
-        {
-            MessageBox.Show("No access token found. Please provide your client ID and client secret.", 
-                "Error",
-                MessageBoxButton.OK,
-                MessageBoxImage.Error);
-            return false;
-        }
-        
-        return true;
-    }
-    
-    private string GetCharacterMetaDataUrl(string accessToken)
-    {
-        return $"https://{Region}.api.blizzard.com/profile/wow/character/{Realm}/{CharacterName}?namespace=profile-{Region}&locale=en_US&access_token={accessToken}";
-    }
-    
-    private string GetCharacterStatusUrl(string accessToken)
-    {
-        return $"https://{Region}.api.blizzard.com/profile/wow/character/{Realm}/{CharacterName}/status?namespace=profile-{Region}&locale=en_US&access_token={accessToken}";
     }
     
     private IList<T> InsertionSort<T>(IList<T> list, Func<T, T, bool> comparison)

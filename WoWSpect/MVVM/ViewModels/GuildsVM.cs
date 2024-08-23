@@ -1,9 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using WoWSpect.HelperClasses;
+using WoWSpect.MVVM.Models.Guilds;
 
 namespace WoWSpect.MVVM.ViewModels;
 
-public partial class GuildsVM : ObservableObject
+public partial class GuildsVM : TokenAccessor
 {
     [ObservableProperty]
     private string _region;
@@ -15,7 +17,13 @@ public partial class GuildsVM : ObservableObject
     private string _guildName;
     
     [ObservableProperty]
+    private GuildMetaData _gmd;
+    
+    [ObservableProperty]
     private bool _hasData = false;
+    
+    [ObservableProperty]
+    private string _infoLabelText = "Enter guild information to search.\n\nMultiple words should be separated by a hyphen (-), e.g. Argent Dawn => Argent-Dawn.";
     
     public GuildsVM()
     {
@@ -23,8 +31,37 @@ public partial class GuildsVM : ObservableObject
     }
 
     [RelayCommand]
-    private void SearchGuild()
+    private async Task SearchGuild()
     {
-        HasData = !HasData;
+        if(Region == string.Empty || Realm == string.Empty || GuildName == string.Empty) return;
+        
+        HasData = false;
+        InfoLabelText = "Searching for guild...";
+        
+        if (!AccessTokenExists(out string accessToken)) return;
+        
+        Region = Region.ToLower();
+        Realm = Realm.ToLower();
+        GuildName = GuildName.ToLower();
+        
+        Dictionary<string, string> queryParams = new()
+        {
+            {"namespace", "profile-" + Region},
+            {"locale", "en_US"},
+            {"access_token", accessToken}
+        };
+        
+        string guildMetaDataUrl = $"https://{Region}.api.blizzard.com/data/wow/guild/{Realm}/{GuildName}/roster";
+        
+        var guildMetaData = await APIHandler.Get<GuildMetaData>(guildMetaDataUrl, queryParams);
+
+        if (guildMetaData is not null)
+        {
+            Gmd = guildMetaData;
+            HasData = true;
+            return;
+        }
+        
+        InfoLabelText = "No guild found. Please check your input.\n\nMultiple words should be separated by a hyphen (-), e.g. Argent Dawn => Argent-Dawn.";
     }
 }

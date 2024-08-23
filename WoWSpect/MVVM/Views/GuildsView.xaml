@@ -74,10 +74,16 @@
                         </Border>
                     </StackPanel>
                     <components:GuildInfo Visibility="{Binding HasData, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}"
-                                          GuildFactionValue=""
-                                          GuildNameValue=""
-                                          GuildRealmValue=""
-                                          GuildMemberListSource=""/>
+                                          GuildFactionValue="{Binding Gmd.guild.faction.name, Mode=OneWay}"
+                                          GuildNameValue="{Binding Gmd.guild.name, Mode=OneWay}"
+                                          GuildRealmValue="{Binding Gmd.guild.realm.name, Mode=OneWay}"
+                                          GuildMemberCountValue="{Binding Gmd.members.Count, Mode=OneWay}"
+                                          GuildMemberListSource="{Binding Gmd.members}"/>
+                    <TextBlock Text="{Binding InfoLabelText}"
+                               Foreground="{StaticResource TextColorBrush}"
+                               FontSize="14"
+                               Visibility="{Binding HasData, Converter={StaticResource InverseBoolToVisibilityConverter}, Mode=OneWay}"
+                               TextWrapping="Wrap"/>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

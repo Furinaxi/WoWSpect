@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WoWSpect.HelperClasses;
@@ -13,6 +14,12 @@ public partial class SettingsVM : ObservableObject
     
     [ObservableProperty]
     private string _clientSecret;
+    
+    private static readonly ProcessStartInfo ProcessStartInfo = new()
+    {
+        FileName = "https://develop.battle.net/access/clients",
+        UseShellExecute = true,
+    };
 
     public SettingsVM()
     {
@@ -33,6 +40,12 @@ public partial class SettingsVM : ObservableObject
             ClientID = string.Empty;
             ClientSecret = string.Empty;
         }
+    }
+    
+    [RelayCommand]
+    private void HandleLinkClick()
+    {
+        Process.Start(ProcessStartInfo);
     }
     
     [RelayCommand]

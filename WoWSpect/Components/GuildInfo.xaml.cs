@@ -18,6 +18,15 @@ public partial class GuildInfo : UserControl
     public static readonly DependencyProperty GuildMemberListSourceProperty = DependencyProperty.Register(
         nameof(GuildMemberListSource), typeof(IEnumerable), typeof(GuildInfo), new PropertyMetadata(null));
 
+    public static readonly DependencyProperty GuildMemberCountValueProperty = DependencyProperty.Register(
+        nameof(GuildMemberCountValue), typeof(string), typeof(GuildInfo), new PropertyMetadata(string.Empty));
+
+    public string GuildMemberCountValue
+    {
+        get { return (string)GetValue(GuildMemberCountValueProperty); }
+        set { SetValue(GuildMemberCountValueProperty, value); }
+    }
+
     public IEnumerable GuildMemberListSource
     {
         get { return (IEnumerable)GetValue(GuildMemberListSourceProperty); }

@@ -48,11 +48,18 @@
                     <Button Style="{StaticResource InteractionButton}"
                             Width="100" 
                             Height="30"
-                            Margin="200 30 0 0"
+                            Margin="200 -20 0 20"
                             Command="{Binding SaveSettingsCommand}">
                         Save
                     </Button>
                 </Grid>
+                <TextBlock Margin="0 20 0 0"
+                           Foreground="{StaticResource TextColorBrush}">
+                    To use this app, you need to register a client on the 
+                    <Hyperlink NavigateUri="https://develop.battle.net/access/clients"
+                               Command="{Binding HandleLinkClickCommand}">Blizzard Development Portal</Hyperlink>.
+                    <LineBreak />
+                </TextBlock>
             </StackPanel>
         </ScrollViewer>
     </Grid>
