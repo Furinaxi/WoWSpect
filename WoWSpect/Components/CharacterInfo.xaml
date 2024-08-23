@@ -4,9 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:WoWSpect.Components"
+             xmlns:helperClasses="clr-namespace:WoWSpect.HelperClasses"
              mc:Ignorable="d"
              d:DesignHeight="570" d:DesignWidth="675"
              x:Name="root">
+    <UserControl.Resources>
+        <helperClasses:DynamicPropertyConverter x:Key="DynamicPropertyConverter" />
+    </UserControl.Resources>
+    
     <StackPanel>
         <StackPanel Margin="0 20 0 0">
                 <local:Header HeaderHeight="40"
@@ -106,20 +111,30 @@
                                TextDisplayShow="{Binding MythicRatingValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                TextDisplayShowColor="{StaticResource TextColorBrush}"/>
-            <ItemsControl>
+            <local:TextDisplay TextDisplayInfo="Season: "
+                               TextDisplayShow="{Binding SeasonIDValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                               TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                               TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+
+            <Label Content="Best Runs" 
+                   FontSize="20"
+                   Foreground="White"/>
+
+            <ItemsControl ItemsSource="{Binding MythicRunsSource, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                          Margin="20 0 0 0">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
+                        <Grid Margin="0 10 0 0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="125" />
+                                <ColumnDefinition Width="300" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             
                             <TextBlock Grid.Column="0" 
-                                       Text="Test" 
+                                       Text="{Binding Converter={StaticResource DynamicPropertyConverter}, ConverterParameter=dungeon.name}" 
                                        Foreground="{StaticResource TextColorBrush}"/>
                             <TextBlock Grid.Column="1" 
-                                       Text="Test" 
+                                       Text="{Binding Converter={StaticResource DynamicPropertyConverter}, ConverterParameter=keystone_level}" 
                                        Foreground="{StaticResource TextColorBrush}"/>
                         </Grid>
                     </DataTemplate>

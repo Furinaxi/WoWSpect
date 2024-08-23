@@ -3,7 +3,10 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WoWSpect.HelperClasses;
 using WoWSpect.MVVM.Models.Players;
+using WoWSpect.MVVM.Models.Players.MythicProfile;
+using WoWSpect.MVVM.Models.Players.MythicSeason;
 using WoWSpect.MVVM.Models.Players.Stats;
+using Season = WoWSpect.MVVM.Models.Players.MythicProfile.Season;
 
 
 namespace WoWSpect.MVVM.ViewModels;
@@ -29,8 +32,31 @@ public partial class PlayersVM : ObservableObject
     private CharacterStatisticData _cStats;
     
     [ObservableProperty]
-    private bool _hasData = false;
+    private MythicProfileData _mythicProfile;
     
+    [ObservableProperty]
+    private MythicSeasonPerformanceData _mythicSeasonPerformance;
+    
+    [ObservableProperty]
+    private List<BestRun> _sortedBestRuns;
+    
+    [ObservableProperty]
+    private bool _hasData = false;
+
+    private static readonly MythicSeasonPerformanceData EmptyMythicSeasonPerformance = new()
+    {
+        best_runs = new List<BestRun>()
+    };
+    
+    private static readonly MythicProfileData EmptyMythicProfileData = new MythicProfileData()
+    {
+        current_mythic_rating = new CurrentMythicRating()
+        {
+            rating = 0
+        }
+    };
+    
+
     public PlayersVM()
     {
         
@@ -79,11 +105,39 @@ public partial class PlayersVM : ObservableObject
             if (characterStats is not null)
             {
                 CStats = characterStats;
-                HasData = true;
+                
             }
+            
+            var mythicProfile = await APIHandler.Get<MythicProfileData>(characterMetaData.mythic_keystone_profile.href, queryParams);
+            
+            if (mythicProfile is not null)
+            {
+                MythicProfile = mythicProfile;
+                
+                Season season = mythicProfile.seasons.MaxBy(s => s.id);
+                
+                var mythicSeasonPerformance = await APIHandler.Get<MythicSeasonPerformanceData>(season.key.href, queryParams);
+                
+                if (mythicSeasonPerformance is not null)
+                {
+                    MythicSeasonPerformance = mythicSeasonPerformance;
+                }
+            }
+            else
+            {
+                MythicProfile = EmptyMythicProfileData;
+                MythicSeasonPerformance = EmptyMythicSeasonPerformance;
+            }
+            
+                            
+            if (MythicSeasonPerformance.best_runs.Count > 0)
+            {
+                SortedBestRuns = InsertionSort(MythicSeasonPerformance.best_runs, (a, b) => a.keystone_level < b.keystone_level).ToList();
+            }
+            
+            
+            HasData = true;
         }
-        
-        
     }
     
     private string GetCharacterMetaDataUrl(string accessToken)
@@ -94,6 +148,23 @@ public partial class PlayersVM : ObservableObject
     private string GetCharacterStatusUrl(string accessToken)
     {
         return $"https://{Region}.api.blizzard.com/profile/wow/character/{Realm}/{CharacterName}/status?namespace=profile-{Region}&locale=en_US&access_token={accessToken}";
+    }
+    
+    private IList<T> InsertionSort<T>(IList<T> list, Func<T, T, bool> comparison)
+    {
+        for (int i = 1; i < list.Count; i++)
+        {
+            T key = list[i];
+            int j = i - 1;
+            while (j >= 0 && comparison(list[j], key))
+            {
+                list[j + 1] = list[j];
+                j = j - 1;
+            }
+            list[j + 1] = key;
+        }
+
+        return list;
     }
     
 }

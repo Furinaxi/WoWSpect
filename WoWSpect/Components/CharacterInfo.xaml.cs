@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace WoWSpect.Components;
@@ -69,7 +70,25 @@ public partial class CharacterInfo : UserControl
         nameof(MythicRatingValue), typeof(string), typeof(CharacterInfo), new PropertyMetadata(string.Empty));
 
     public static readonly DependencyProperty AvgItemLevelValueProperty = DependencyProperty.Register(
-        nameof(AvgItemLevelValue), typeof(string), typeof(CharacterInfo), new PropertyMetadata(default(string)));
+        nameof(AvgItemLevelValue), typeof(string), typeof(CharacterInfo), new PropertyMetadata(string.Empty));
+
+    public static readonly DependencyProperty MythicRunsSourceProperty = DependencyProperty.Register(
+        nameof(MythicRunsSource), typeof(IEnumerable), typeof(CharacterInfo), new PropertyMetadata(null));
+
+    public static readonly DependencyProperty SeasonIDValueProperty = DependencyProperty.Register(
+        nameof(SeasonIDValue), typeof(string), typeof(CharacterInfo), new PropertyMetadata(string.Empty));
+
+    public string SeasonIDValue
+    {
+        get { return (string)GetValue(SeasonIDValueProperty); }
+        set { SetValue(SeasonIDValueProperty, value); }
+    }
+
+    public IEnumerable MythicRunsSource
+    {
+        get { return (IEnumerable)GetValue(MythicRunsSourceProperty); }
+        set { SetValue(MythicRunsSourceProperty, value); }
+    }
 
     public string AvgItemLevelValue
     {

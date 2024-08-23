@@ -91,7 +91,10 @@
                                           MasteryValue="{Binding CStats.mastery.value, StringFormat=N2}"
                                           AvoidanceValue="{Binding CStats.avoidance.rating}"
                                           LeechValue="{Binding CStats.lifesteal.value, StringFormat=N2}"
-                                          SpeedValue="{Binding CStats.speed.rating}"/>
+                                          SpeedValue="{Binding CStats.speed.rating}"
+                                          MythicRunsSource="{Binding SortedBestRuns}"
+                                          SeasonIDValue="{Binding MythicSeasonPerformance.season.id}"
+                                          MythicRatingValue="{Binding MythicSeasonPerformance.mythic_rating.rating}"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>
