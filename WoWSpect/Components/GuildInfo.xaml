@@ -70,11 +70,11 @@
                             FontSize="14"
                             Foreground="White"/>
                 </Grid>
-                <ItemsControl Margin="10 10 0 0"
+                <ItemsControl Margin="10 0 0 0"
                               ItemsSource="{Binding GuildMemberListSource, RelativeSource={RelativeSource AncestorType=UserControl}}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Grid Margin="0 10 0 0">
+                            <Grid Margin="0 10 0 10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />

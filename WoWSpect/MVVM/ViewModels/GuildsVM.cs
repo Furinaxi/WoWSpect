@@ -23,6 +23,9 @@ public partial class GuildsVM : TokenAccessor
     private bool _hasData = false;
     
     [ObservableProperty]
+    private List<Member> _sortedMembersList;
+    
+    [ObservableProperty]
     private string _infoLabelText = "Enter guild information to search.\n\nMultiple words should be separated by a hyphen (-), e.g. Argent Dawn => Argent-Dawn.";
     
     public GuildsVM()
@@ -58,6 +61,7 @@ public partial class GuildsVM : TokenAccessor
         if (guildMetaData is not null)
         {
             Gmd = guildMetaData;
+            SortedMembersList = Gmd.members.OrderBy(m => m.character.name).ToList();
             HasData = true;
             return;
         }
