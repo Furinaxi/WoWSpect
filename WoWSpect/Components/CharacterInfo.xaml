@@ -17,39 +17,53 @@
                     <local:TextDisplay TextDisplayInfo="Character Name:"
                                    TextDisplayShow="{Binding CharacterNameValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
-                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"
+                                   LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Faction:"
                                    TextDisplayShow="{Binding FactionValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
-                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"
+                                   LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Race:"
                                    TextDisplayShow="{Binding RaceValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
-                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"
+                                   LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Class:"
                                    TextDisplayShow="{Binding ClassValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
-                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"
+                                   LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Active Spec:"
                                    TextDisplayShow="{Binding ActiveSpecValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
-                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"
+                                   LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Realm:"
                                    TextDisplayShow="{Binding RealmValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
-                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"
+                                   LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Level:"
                                    TextDisplayShow="{Binding LevelValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
-                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"
+                                   LabelDistanceValue="200"/>
+                    <local:TextDisplay TextDisplayInfo="Avg. Item Level:"
+                                       TextDisplayShow="{Binding AvgItemLevelValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                       TextDisplayInfoColor="{StaticResource TextColorBrush}"
+                                       TextDisplayShowColor="{StaticResource TextColorBrush}"
+                                       LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Active Title:"
                                    TextDisplayShow="{Binding ActiveTitleValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
-                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"
+                                   LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Subscribed:"
                                    TextDisplayShow="{Binding CurrentlySubscribedValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
-                                   TextDisplayShowColor="{StaticResource TextColorBrush}"/>
+                                   TextDisplayShowColor="{StaticResource TextColorBrush}"
+                                   LabelDistanceValue="200"/>
                 </StackPanel>
             </StackPanel>
         <local:StatDisplay StatHeaderContent="Main Stats"

@@ -18,6 +18,15 @@ public partial class TextDisplay : UserControl
     public static readonly DependencyProperty TextDisplayShowColorProperty = DependencyProperty.Register(
         nameof(TextDisplayShowColor), typeof(Brush), typeof(TextDisplay), new PropertyMetadata(Brushes.White));
 
+    public static readonly DependencyProperty LabelDistanceValueProperty = DependencyProperty.Register(
+        nameof(LabelDistanceValue), typeof(GridLength), typeof(TextDisplay), new PropertyMetadata(new GridLength(100)));
+
+    public GridLength LabelDistanceValue
+    {
+        get { return (GridLength)GetValue(LabelDistanceValueProperty); }
+        set { SetValue(LabelDistanceValueProperty, value); }
+    }
+
     public Brush TextDisplayShowColor
     {
         get { return (Brush)GetValue(TextDisplayShowColorProperty); }

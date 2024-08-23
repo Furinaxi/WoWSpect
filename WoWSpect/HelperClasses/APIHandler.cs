@@ -1,4 +1,5 @@
-﻿using Flurl.Http;
+﻿using Flurl;
+using Flurl.Http;
 
 namespace WoWSpect.HelperClasses;
 
@@ -22,6 +23,50 @@ public class APIHandler
                 .WithBasicAuth(username, password)
                 .PostUrlEncodedAsync(postBody)
                 .ReceiveJson<T>();
+            
+            return response;
+        }
+        catch (FlurlHttpException e)
+        {
+            return default;
+        }
+    }
+    
+    /// <summary>
+    /// Sends a GET request to the specified URL
+    /// </summary>
+    /// <param name="url">URL to send the GET request to</param>
+    /// <typeparam name="T">Type that matches the expected JSON</typeparam>
+    /// <returns>Object of the specified type containing the data</returns>
+    public static async Task<T?> Get<T>(string url)
+    {
+        try
+        {
+            var response = await url
+                .GetJsonAsync<T>();
+            
+            return response;
+        }
+        catch (FlurlHttpException e)
+        {
+            return default;
+        }
+    }
+
+    /// <summary>
+    /// Sends a GET request to the specified URL with the specified parameters
+    /// </summary>
+    /// <param name="url">URL to send the GET request to</param>
+    /// <param name="parameters">The query parameters to use</param>
+    /// <typeparam name="T">Type that matches the received JSON</typeparam>
+    /// <returns>Object of the specified type containing the data</returns>
+    public static async Task<T?> Get<T>(string url, object parameters)
+    {
+        try
+        {
+            var response = await url
+                .SetQueryParams(parameters)
+                .GetJsonAsync<T>();
             
             return response;
         }

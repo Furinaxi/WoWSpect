@@ -13,6 +13,10 @@
         <helperClasses:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </UserControl.Resources>
     
+    <UserControl.DataContext>
+        <viewModels:PlayersVM />
+    </UserControl.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -41,17 +45,18 @@
                                                  UserInputMaxLength="2"
                                                  TextBoxLabelColor="{StaticResource TextColorBrush}"
                                                  TextBoxLabelFontSize="11"
-                                                 TextBoxUserInput="{Binding Region}"/>
+                                                 TextBoxUserInput="{Binding Region, Mode=TwoWay}"/>
                     <components:TextBoxWithLabel TextLabelText="Realm"
                                                  TextBoxLabelColor="{StaticResource TextColorBrush}"
-                                                 TextBoxUserInput="{Binding Realm}"/>
+                                                 TextBoxUserInput="{Binding Realm, Mode=TwoWay}"/>
                     <components:TextBoxWithLabel TextLabelText="Character Name"
                                                  TextBoxLabelColor="{StaticResource TextColorBrush}"
-                                                 TextBoxUserInput="{Binding CharacterName}"/>
+                                                 TextBoxUserInput="{Binding CharacterName, Mode=TwoWay}"/>
                     <Button Style="{StaticResource InteractionButton}"
                             Width="100"
                             Height="30"
-                            Margin="200 20 0 0">
+                            Margin="200 20 0 0"
+                            Command="{Binding SearchCharacterCommand}">
                         Search
                     </Button>
                     <Border Height="1" Opacity="0.5" Margin="0 15 0 0 ">
@@ -65,7 +70,28 @@
                         </Border.Background>
                     </Border>
                 </StackPanel>
-                <components:CharacterInfo Visibility="{Binding HasData, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                <components:CharacterInfo Visibility="{Binding HasData, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}"
+                                          CharacterNameValue="{Binding Cmd.name}"
+                                          FactionValue="{Binding Cmd.faction.name}"
+                                          RaceValue="{Binding Cmd.race.name}"
+                                          ClassValue="{Binding Cmd.character_class.name}"
+                                          ActiveSpecValue="{Binding Cmd.active_spec.name}"
+                                          RealmValue="{Binding Cmd.realm.name}"
+                                          LevelValue="{Binding Cmd.level}"
+                                          ActiveTitleValue="{Binding Cmd.active_title.name}"
+                                          AvgItemLevelValue="{Binding Cmd.average_item_level}"
+                                          CurrentlySubscribedValue="{Binding Csd.is_valid}"
+                                          StaminaValue="{Binding CStats.stamina.effective}"
+                                          IntellectValue="{Binding CStats.intellect.effective}"
+                                          StrengthValue="{Binding CStats.strength.effective}"
+                                          AgilityValue="{Binding CStats.agility.effective}"
+                                          CritValue="{Binding CStats.melee_crit.value, StringFormat=N2}"
+                                          HasteValue="{Binding CStats.melee_haste.value, StringFormat=N2}"
+                                          VersatilityValue="{Binding CStats.versatility}"
+                                          MasteryValue="{Binding CStats.mastery.value, StringFormat=N2}"
+                                          AvoidanceValue="{Binding CStats.avoidance.rating}"
+                                          LeechValue="{Binding CStats.lifesteal.value, StringFormat=N2}"
+                                          SpeedValue="{Binding CStats.speed.rating}"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

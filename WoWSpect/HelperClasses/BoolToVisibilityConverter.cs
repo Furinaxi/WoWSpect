@@ -8,14 +8,11 @@ public class BoolToVisibilityConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        return (bool) value ? Visibility.Visible : Visibility.Collapsed;
+        return ((bool) value) ? Visibility.Visible : Visibility.Collapsed;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        // Visibility visibility = (Visibility)value;
-        // return visibility == Visibility.Visible;
-        
         throw new NotImplementedException();
     }
 }

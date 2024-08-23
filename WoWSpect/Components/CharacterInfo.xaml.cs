@@ -68,6 +68,15 @@ public partial class CharacterInfo : UserControl
     public static readonly DependencyProperty MythicRatingValueProperty = DependencyProperty.Register(
         nameof(MythicRatingValue), typeof(string), typeof(CharacterInfo), new PropertyMetadata(string.Empty));
 
+    public static readonly DependencyProperty AvgItemLevelValueProperty = DependencyProperty.Register(
+        nameof(AvgItemLevelValue), typeof(string), typeof(CharacterInfo), new PropertyMetadata(default(string)));
+
+    public string AvgItemLevelValue
+    {
+        get { return (string)GetValue(AvgItemLevelValueProperty); }
+        set { SetValue(AvgItemLevelValueProperty, value); }
+    }
+
     public string MythicRatingValue
     {
         get { return (string)GetValue(MythicRatingValueProperty); }
