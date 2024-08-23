@@ -43,14 +43,17 @@ public partial class PlayersVM : ObservableObject
     [ObservableProperty]
     private bool _hasData = false;
 
+    [ObservableProperty]
+    private string _infoLabelText = "Enter character information to search. Multiple words should be separated by a hyphen (-), e.g. Argent Dawn => Argent-Dawn.";
+
     private static readonly MythicSeasonPerformanceData EmptyMythicSeasonPerformance = new()
     {
-        best_runs = new List<BestRun>()
-    };
-    
-    private static readonly MythicProfileData EmptyMythicProfileData = new MythicProfileData()
-    {
-        current_mythic_rating = new CurrentMythicRating()
+        best_runs = new List<BestRun>(),
+        season = new ()
+        {
+            id = 0
+        },
+        mythic_rating = new ()
         {
             rating = 0
         }
@@ -68,15 +71,9 @@ public partial class PlayersVM : ObservableObject
         if(Region == string.Empty || Realm == string.Empty || CharacterName == string.Empty) return;
 
         HasData = false;
+        InfoLabelText = "Loading...";
         
-        if (!AppConfigHandler.TryGetValue(AppConfigHandler.AccessTokenKey, out string accessToken))
-        {
-            MessageBox.Show("No access token found. Please provide your client ID and client secret.", 
-                "Error",
-                MessageBoxButton.OK,
-                MessageBoxImage.Error);
-            return;
-        }
+        if (!AccessTokenExists(out string accessToken)) return;
         
         Region = Region.ToLower();
         Realm = Realm.ToLower();
@@ -105,7 +102,6 @@ public partial class PlayersVM : ObservableObject
             if (characterStats is not null)
             {
                 CStats = characterStats;
-                
             }
             
             var mythicProfile = await APIHandler.Get<MythicProfileData>(characterMetaData.mythic_keystone_profile.href, queryParams);
@@ -114,18 +110,21 @@ public partial class PlayersVM : ObservableObject
             {
                 MythicProfile = mythicProfile;
                 
-                Season season = mythicProfile.seasons.MaxBy(s => s.id);
+                if(MythicProfile.seasons is null)
+                {
+                    MythicSeasonPerformance = EmptyMythicSeasonPerformance;
+                    HasData = true;
+                    return;
+                }
+                
+                Season season = MythicProfile.seasons.MaxBy(s => s.id);
                 
                 var mythicSeasonPerformance = await APIHandler.Get<MythicSeasonPerformanceData>(season.key.href, queryParams);
                 
-                if (mythicSeasonPerformance is not null)
-                {
-                    MythicSeasonPerformance = mythicSeasonPerformance;
-                }
+                MythicSeasonPerformance = mythicSeasonPerformance ?? EmptyMythicSeasonPerformance;
             }
             else
             {
-                MythicProfile = EmptyMythicProfileData;
                 MythicSeasonPerformance = EmptyMythicSeasonPerformance;
             }
             
@@ -137,7 +136,24 @@ public partial class PlayersVM : ObservableObject
             
             
             HasData = true;
+            return;
         }
+        
+        InfoLabelText = "Character not found. Please check the region, realm, and character name and try again. \n\nMultiple words should be separated by a hyphen (-), e.g. Argent Dawn => Argent-Dawn.";
+    }
+    
+    private bool AccessTokenExists(out string accessToken)
+    {
+        if (!AppConfigHandler.TryGetValue(AppConfigHandler.AccessTokenKey, out accessToken))
+        {
+            MessageBox.Show("No access token found. Please provide your client ID and client secret.", 
+                "Error",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+            return false;
+        }
+        
+        return true;
     }
     
     private string GetCharacterMetaDataUrl(string accessToken)

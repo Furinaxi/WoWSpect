@@ -11,6 +11,7 @@
              d:DataContext="{d:DesignInstance Type=viewModels:PlayersVM, IsDesignTimeCreatable=false}">
     <UserControl.Resources>
         <helperClasses:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <helperClasses:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
     </UserControl.Resources>
     
     <UserControl.DataContext>
@@ -95,6 +96,11 @@
                                           MythicRunsSource="{Binding SortedBestRuns}"
                                           SeasonIDValue="{Binding MythicSeasonPerformance.season.id}"
                                           MythicRatingValue="{Binding MythicSeasonPerformance.mythic_rating.rating}"/>
+                <TextBlock Text="{Binding InfoLabelText}"
+                       Foreground="{StaticResource TextColorBrush}"
+                       FontSize="14"
+                       Visibility="{Binding HasData, Converter={StaticResource InverseBoolToVisibilityConverter}, Mode=OneWay}"
+                       TextWrapping="Wrap"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>
