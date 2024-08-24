@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Windows;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WoWSpect.HelperClasses;
 
@@ -14,7 +15,7 @@ public partial class MainWindowVM : ObservableObject
     [RelayCommand]
     private void CloseApp()
     {
-        Environment.Exit(0);
+        Application.Current.Shutdown(0);
     }
 
 }
