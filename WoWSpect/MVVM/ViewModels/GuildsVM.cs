@@ -24,9 +24,11 @@ public partial class GuildsVM : TokenAccessor
     
     [ObservableProperty]
     private List<Member> _sortedMembersList;
-    
+
     [ObservableProperty]
-    private string _infoLabelText = "Enter guild information to search.\n\nMultiple words should be separated by a hyphen (-), e.g. Argent Dawn => Argent-Dawn.";
+    private string _infoLabelText = StandardText;
+    
+    private const string StandardText = "Enter guild information to search.\n\nMultiple words should be separated by a hyphen (-), e.g. Argent Dawn => Argent-Dawn.";
     
     public GuildsVM()
     {
@@ -40,8 +42,12 @@ public partial class GuildsVM : TokenAccessor
         
         HasData = false;
         InfoLabelText = "Searching for guild...";
-        
-        if (!AccessTokenExists(out string accessToken)) return;
+
+        if (!AccessTokenExists(out string accessToken))
+        {
+            InfoLabelText = StandardText;
+            return;
+        }
         
         Region = Region.ToLower();
         Realm = Realm.ToLower();
