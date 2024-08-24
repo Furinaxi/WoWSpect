@@ -43,7 +43,9 @@ public partial class PlayersVM : TokenAccessor
     private bool _hasData = false;
 
     [ObservableProperty]
-    private string _infoLabelText = "Enter character information to search.\n\nMultiple words should be separated by a hyphen (-), e.g. Argent Dawn => Argent-Dawn.";
+    private string _infoLabelText = StandardText;
+    
+    private const string StandardText = "Enter character information to search.\n\nMultiple words should be separated by a hyphen (-), e.g. Argent Dawn => Argent-Dawn.";
 
     private static readonly MythicSeasonPerformanceData EmptyMythicSeasonPerformance = new()
     {
@@ -71,8 +73,12 @@ public partial class PlayersVM : TokenAccessor
 
         HasData = false;
         InfoLabelText = "Loading...";
-        
-        if (!AccessTokenExists(out string accessToken)) return;
+
+        if (!AccessTokenExists(out string accessToken))
+        {
+            InfoLabelText = StandardText;
+            return;
+        }
         
         Region = Region.ToLower();
         Realm = Realm.ToLower();
