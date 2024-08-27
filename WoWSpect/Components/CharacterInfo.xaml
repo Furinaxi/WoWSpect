@@ -20,52 +20,52 @@
                               Margin="-500 0 0 0 "/>
                 <StackPanel Margin="0 10 0 0">
                     <local:TextDisplay TextDisplayInfo="Character Name:"
-                                   TextDisplayShow="{Binding CharacterNameValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding CharacterMetaDataValue.name, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"
                                    LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Faction:"
-                                   TextDisplayShow="{Binding FactionValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding CharacterMetaDataValue.faction.name, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"
                                    LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Race:"
-                                   TextDisplayShow="{Binding RaceValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding CharacterMetaDataValue.race.name, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"
                                    LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Class:"
-                                   TextDisplayShow="{Binding ClassValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding CharacterMetaDataValue.character_class.name, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"
                                    LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Active Spec:"
-                                   TextDisplayShow="{Binding ActiveSpecValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding CharacterMetaDataValue.active_spec.name, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"
                                    LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Realm:"
-                                   TextDisplayShow="{Binding RealmValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding CharacterMetaDataValue.realm.name, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"
                                    LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Level:"
-                                   TextDisplayShow="{Binding LevelValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding CharacterMetaDataValue.level, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"
                                    LabelDistanceValue="200"/>
                     <local:TextDisplay TextDisplayInfo="Avg. Item Level:"
-                                       TextDisplayShow="{Binding AvgItemLevelValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                       TextDisplayShow="{Binding CharacterMetaDataValue.average_item_level, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                        TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                        TextDisplayShowColor="{StaticResource TextColorBrush}"
                                        LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Active Title:"
-                                   TextDisplayShow="{Binding ActiveTitleValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding CharacterMetaDataValue.active_title.name, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"
                                    LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Subscribed:"
-                                   TextDisplayShow="{Binding CurrentlySubscribedValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding CharacterStatusDataValue.is_valid, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"
                                    LabelDistanceValue="200"/>
@@ -76,10 +76,10 @@
                            SecondStatName="Strength:"
                            ThirdStatName="Agility:"
                            FourthStatName="Intellect:"
-                           FirstStatValue="{Binding StaminaValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                           SecondStatValue="{Binding StrengthValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                           ThirdStatValue="{Binding AgilityValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                           FourthStatValue="{Binding IntellectValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           FirstStatValue="{Binding CharacterStatisticsDataValue.stamina.effective, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           SecondStatValue="{Binding CharacterStatisticsDataValue.strength.effective, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           ThirdStatValue="{Binding CharacterStatisticsDataValue.agility.effective, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           FourthStatValue="{Binding CharacterStatisticsDataValue.intellect.effective, RelativeSource={RelativeSource AncestorType=UserControl}}"
                            Margin="0 20 0 0"/>
         
         <local:StatDisplay StatHeaderContent="Secondary Stats"
@@ -87,19 +87,19 @@
                            SecondStatName="Haste:"
                            ThirdStatName="Mastery:"
                            FourthStatName="Versatility:"
-                           FirstStatValue="{Binding CritValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                           SecondStatValue="{Binding HasteValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                           ThirdStatValue="{Binding MasteryValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                           FourthStatValue="{Binding VersatilityValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           FirstStatValue="{Binding CharacterStatisticsDataValue.melee_crit.value, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           SecondStatValue="{Binding CharacterStatisticsDataValue.melee_haste.value, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           ThirdStatValue="{Binding CharacterStatisticsDataValue.mastery.value, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           FourthStatValue="{Binding CharacterStatisticsDataValue.versatility, RelativeSource={RelativeSource AncestorType=UserControl}}"
                            Margin="0 20 0 0"/>
         
         <local:StatDisplay StatHeaderContent="Tertiary Stats"
                            FirstStatName="Avoidance:"
                            SecondStatName="Leech:"
                            ThirdStatName="Speed:"
-                           FirstStatValue="{Binding AvoidanceValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                           SecondStatValue="{Binding LeechValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                           ThirdStatValue="{Binding SpeedValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           FirstStatValue="{Binding CharacterStatisticsDataValue.avoidance.rating, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           SecondStatValue="{Binding CharacterStatisticsDataValue.lifesteal.value, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           ThirdStatValue="{Binding CharacterStatisticsDataValue.speed.rating, RelativeSource={RelativeSource AncestorType=UserControl}}"
                            Margin="0 20 0 0"/>
         
         <StackPanel>
@@ -108,11 +108,11 @@
                           HeaderContent="Mythic+ Stats"
                           Margin="-500 20 0 10 "/>
             <local:TextDisplay TextDisplayInfo="Rating:"
-                               TextDisplayShow="{Binding MythicRatingValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                               TextDisplayShow="{Binding MythicSeasonPerformanceValue.mythic_rating.rating, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                TextDisplayShowColor="{StaticResource TextColorBrush}"/>
             <local:TextDisplay TextDisplayInfo="Season: "
-                               TextDisplayShow="{Binding SeasonIDValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                               TextDisplayShow="{Binding MythicSeasonPerformanceValue.season.id, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                TextDisplayShowColor="{StaticResource TextColorBrush}"/>
 

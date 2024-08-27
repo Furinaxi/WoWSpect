@@ -138,6 +138,10 @@ public partial class PlayersVM : TokenAccessor
             {
                 SortedBestRuns = InsertionSort(MythicSeasonPerformance.best_runs, (a, b) => a.keystone_level < b.keystone_level).ToList();
             }
+            else
+            {
+                SortedBestRuns = new List<BestRun>();
+            }
             
             
             HasData = true;

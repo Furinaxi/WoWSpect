@@ -21,23 +21,23 @@
                           Margin="-500 0 0 0 "/>
             <StackPanel Margin="0 10 0 0">
                 <local:TextDisplay TextDisplayInfo="Name:"
-                                   TextDisplayShow="{Binding GuildNameValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding GuildMetaDataValue.guild.name, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"
                                    LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Realm:"
-                                   TextDisplayShow="{Binding GuildRealmValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding GuildMetaDataValue.guild.realm.name, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"
                                    LabelDistanceValue="200"/>
                 <local:TextDisplay TextDisplayInfo="Faction:"
-                                   TextDisplayShow="{Binding GuildFactionValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                   TextDisplayShow="{Binding GuildMetaDataValue.guild.faction.name, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                    TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                    TextDisplayShowColor="{StaticResource TextColorBrush}"
                                    LabelDistanceValue="200"/>
                 
                 <local:TextDisplay TextDisplayInfo="Member Count:"
-                                      TextDisplayShow="{Binding GuildMemberCountValue, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                      TextDisplayShow="{Binding GuildMetaDataValue.members.Count, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                       TextDisplayInfoColor="{StaticResource TextColorBrush}"
                                       TextDisplayShowColor="{StaticResource TextColorBrush}"
                                       LabelDistanceValue="200"/>
