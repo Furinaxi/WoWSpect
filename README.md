@@ -15,6 +15,8 @@ After creating the client, you need to set the client ID and the client secret i
 
 When it's all done and set, you can look up players and guilds.
 
+If a player or a guild cannot be found after a while, re-save your settings to generate a new access token.
+
 Multiple words need to be separated with a hyphen (-).  
 "Argent Dawn" should be written as "Argent-Dawn".
 
