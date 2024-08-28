@@ -50,8 +50,8 @@ public partial class GuildsVM : TokenAccessor
         }
         
         Region = Region.ToLower();
-        Realm = Realm.ToLower();
-        GuildName = GuildName.ToLower();
+        Realm = Realm.ToLower().Replace(" ", "-");
+        GuildName = GuildName.ToLower().Replace(" ", "-");
         
         Dictionary<string, string> queryParams = new()
         {

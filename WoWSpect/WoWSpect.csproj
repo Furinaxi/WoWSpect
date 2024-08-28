@@ -7,6 +7,12 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
         <ApplicationIcon>Assets\AppIcon.ico</ApplicationIcon>
+        <Version>1.0.1</Version>
+        <Title>WoWSpect</Title>
+        <Description>Desktop application to look up player and guild information outside of Blizzard Entertainment's World Of Warcraft.</Description>
+        <Copyright>(c) Jan-Niklas Burose 2024</Copyright>
+        <PackageLicenseUrl>https://github.com/Furinaxi/WoWSpect/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/Furinaxi/WoWSpect</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>

@@ -81,7 +81,7 @@ public partial class PlayersVM : TokenAccessor
         }
         
         Region = Region.ToLower();
-        Realm = Realm.ToLower();
+        Realm = Realm.ToLower().Replace(" ", "-");
         CharacterName = CharacterName.ToLower();
         
         Dictionary<string, string> queryParams = new()
