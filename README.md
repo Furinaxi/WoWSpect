@@ -7,6 +7,9 @@ This project was created as part of a student project.
 
 It uses Blizzard's official API to stay up to date with the current expansions and their respective data.
 
+![image](https://github.com/user-attachments/assets/8c045c52-51d9-4e4e-814c-42d72d4fab1e)
+
+
 
 ## Usage
 To use this application, you need to create your own client at [Blizzard's development portal](https://develop.battle.net/access/clients).
